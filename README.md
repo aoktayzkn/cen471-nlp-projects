@@ -43,12 +43,28 @@ cen471-nlp-projects/
 │   ├── README.md
 │   ├── data/
 │   │   ├── raw/
+│   │   │   ├── imdb_test_100.csv
+│   │   │   └── imdb_balanced_200.csv
 │   │   └── processed/
+│   │       └── extracted_results.csv
 │   ├── prompts/
+│   │   └── extraction_prompt.py
 │   ├── src/
+│   │   ├── data_loader.py
+│   │   ├── parser.py
+│   │   ├── pipeline.py
+│   │   └── evaluator.py
 │   └── reports/
 │       ├── error_analysis.txt
-│       └── plots/
+│       ├── result.txt
+│       ├── plots/
+│       │   ├── 1_performance_metrics.png
+│       │   ├── 2_confusion_matrix.png
+│       │   ├── 3_prediction_distribution.png
+│       │   └── 4_latency_distribution.png
+│       └── imbalanced dataset results/
+│           └── baseline_imbalanced_evaluation_report.txt
+│           └── imbalanced_report.txt
 ├── project_2_translation_paraphrase/
 └── project_3_summarization_mapreduce/
 ```
