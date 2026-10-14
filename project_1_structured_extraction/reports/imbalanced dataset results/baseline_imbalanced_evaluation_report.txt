@@ -1,0 +1,53 @@
+================================================================================
+CEN471 - PROJECT 1: BASELINE EVALUATION REPORT (100 IMBALANCED SAMPLES)
+================================================================================
+
+--- 1. OVERALL PIPELINE & SCHEMA VALIDATION ---
+Dataset Configuration   : 100 samples (100% Negative Ground Truth)
+Model Architecture      : Qwen 2.5:7B (Local via Ollama)
+Total Processed Samples : 100
+Valid JSON Output Count : 99 (%99.00)
+Invalid JSON Count      : 1 (%1.00) [Sample #82: schema deviation with 'mixed']
+Mean Latency            : 926.10 ms
+Warm Mean Latency       : 867.36 ms (Excluding Sample #1 cold-start: 6741.5 ms)
+Median Latency          : 801.65 ms
+
+--- 2. PREDICTION DISTRIBUTION ---
+- Predicted Negative   : 82 / 100 (%82.00) [True Negatives]
+- Predicted Positive   : 9 / 100 (%9.00)  [False Positives / Sarcasm-Praise Traps]
+- Predicted Neutral    : 8 / 100 (%8.00)  [Ambivalent / Synopsis Drift]
+- Invalid / None       : 1 / 100 (%1.00)  [Rejected by Schema Guardrails]
+
+--- 3. CLASSIFICATION PERFORMANCE METRICS ---
+Evaluation Target       : Negative Sentiment Class (True Ground Truth = Negative)
+Strict Accuracy         : %82.00 (82 / 100 exact matches)
+
+Mathematical Formulations & Breakdown:
+- True Positives  (TP) : 82 (Correctly predicted as negative)
+- False Positives (FP) : 0  (No actual positive samples existed to mispredict as negative)
+- False Negatives (FN) : 18 (True negatives misclassified as positive, neutral, or invalid)
+
+Precision Calculation:
+  Precision = TP / (TP + FP) = 82 / (82 + 0) = 1.0000 (%100.00)
+
+Recall Calculation:
+  Recall    = TP / (TP + FN) = 82 / (82 + 18) = 0.8200 (%82.00)
+
+F1-Score Calculation:
+  F1-Score  = 2 * (Precision * Recall) / (Precision + Recall)
+            = 2 * (1.00 * 0.82) / (1.00 + 0.82)
+            = 1.64 / 1.82
+            = 0.9011 (%90.11)
+
+--- 4. NOTABLE FAILURE MODES ---
+1. Schema Deviation (Sample #82):
+   - Produced output: {"category": "horror", "sentiment": "mixed", ...}
+   - Root Cause: Model generated 'mixed' despite strict 3-way sentiment constraint.
+   - Mitigation implemented in later iterations: Strict Enum definition + fallback normalization.
+
+2. Praise / Politeness Trap:
+   - 9 samples misclassified as positive due to localized compliments (actors, style) overriding negative film verdict.
+
+3. Objective Plot Synopses:
+   - 8 samples misclassified as neutral due to absence of strong emotional tokens.
+================================================================================
