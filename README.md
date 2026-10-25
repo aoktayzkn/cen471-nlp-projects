@@ -2,17 +2,13 @@
 
 This repository hosts three modular NLP course projects developed under strict local constraints.
 
----
-
 ## 📌 Projects Matrix
 
-| Project | Domain | Architecture / Local Engine | Status |
-| :--- | :--- | :--- | :---: |
-| **Project 1** | Structured Information Extraction, Temperature & Prompt Ablation | Local Seq2Seq / LLM In-Context | Complete |
-| **Project 2** | Machine Translation & Paraphrasing | Local Seq2Seq / LLM In-Context | Complete |
-| **Project 3** | Long-Document Summarization | Hierarchical MapReduce via Local LLM | Complete |
-
----
+| Project | Domain | Architecture / Local Engine | Status | 
+| ----- | ----- | ----- | ----- | 
+| **Project 1** | Structured Information Extraction, Temperature & Prompt Ablation | Local Seq2Seq / LLM In-Context | **Complete** | 
+| **Project 2** | Machine Translation & Paraphrasing | Local Seq2Seq / LLM In-Context | *Pending* | 
+| **Project 3** | Long-Document Summarization | Hierarchical MapReduce via Local LLM | *Pending* | 
 
 ## 🛠️ Global Environment & Setup
 
@@ -36,8 +32,6 @@ Ensure Ollama is installed and the base model is pulled locally:
 ```bash
 ollama run qwen2.5:7b
 ```
-
----
 
 ## 📂 Repository Architecture
 
@@ -89,11 +83,11 @@ cen471-nlp-projects/
 
 ---
 
-## 🔨 Project 1 Highlights: Dual Ablation Framework
+## 🔬 Project 1 Highlights: Dual Ablation Framework
 
 Project 1 was rigorously benchmarked across **200 balanced IMDB reviews** under two empirical axes: **Sampling Temperature Dynamics** and **System Prompt Optimization**.
 
-### 1. Temperature Ablation Study ($T \in \{0.0, 0.3, 0.7, 1.0\}$)
+### 1. Temperature Study ($T \in \{0.0, 0.3, 0.7, 1.0\}$)
 
 Evaluated model behavior and determinism using the baseline prompt:
 
@@ -108,8 +102,6 @@ Evaluated model behavior and determinism using the baseline prompt:
 - **Entropy Hierarchy:** While closed-domain classification remained deterministic (sentiment flipped in $\le 2.0\%$ of samples), open-domain extraction exhibited significant divergence: category assignments shifted by **13.5%**, and extracted named entity sets diverged by **53.0%** at $T = 1.0$ compared to $T = 0.0$.
 - **Engineering Standard:** $T = 0.0$ is retained as the production configuration to guarantee determinism, eliminate hallucinated entities, and enforce strict reproducibility.
 
----
-
 ### 2. Prompt Optimization Ablation Study ($v1 \to v2 \to v3$ at $T = 0.0$)
 
 Following error analysis on the baseline outputs, the system prompt underwent two iterative refinements:
@@ -118,17 +110,9 @@ Following error analysis on the baseline outputs, the system prompt underwent tw
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **v1 (Baseline)** | Ternary label domain (`pos` / `neg` / `neu`), open entity extraction | 19 / 200 | 90.50% | 0.9255 | 100.0% |
 | **v2 (Binary Alignment)** | Polarity resolution (neutral removed), proper noun entity filter | 15 / 200 | 92.50% | 0.9250 | 100.0% |
-| **v3 (Heuristic-Guided)** | Explicit numerical rating cues, sole redeeming factor rule, concluding stance dominance | 8 / 200 | 96.00% | 0.9600 | 100.0% |
+| **v3 (Heuristic-Guided)** | Explicit numerical rating cues, sole redeeming factor rule, concluding stance dominance | 8 / 200 | **96.00%** | **0.9600** | 100.0% |
 
-```text
-PROMPT ABLATION PROGRESSION (200 SAMPLES)
-v1 (Baseline)       [========================================> ] 90.50% (19 errors)
-v2 (Binary Alignment) [==========================================> ] 92.50% (15 errors)
-v3 (Heuristic-Guided) [==============================================] 96.00% (8 errors)
-```
-
-### Key Architectural Contributions in Prompt v3
-
+#### Key Architectural Contributions in Prompt v3
 1. **Zero-Regression Optimization:** Transitioning from v2 to v3 corrected **7 critical edge-case errors** while preserving **100% of previously correct classifications** (`newly_broken: 0`).
 2. **Symmetric Class Balance:** Prompt v3 achieved completely balanced classification across both classes:
    - **Negative Sentiment:** 96.00% Precision | 96.00% Recall | 0.9600 F1 (96 TN, 4 FP)
