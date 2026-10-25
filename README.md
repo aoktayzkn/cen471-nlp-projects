@@ -71,9 +71,9 @@ cen471-nlp-projects/
 │       │   ├── 4_latency_distribution.png
 │       │   ├── 5_temperature_divergence_analysis.png
 │       │   ├── 6_temperature_evaluation_benchmark.png
-│       │   ├── prompt_ablation_performance_progression.png
-│       │   ├── confusion_matrices_v2_vs_v3.png
-│       │   └── precision_recall_comparison_v2_v3.png
+│       │   ├── 7_prompt_ablation_performance_progression.png
+│       │   ├── 8_confusion_matrices_v2_vs_v3.png
+│       │   └── 9_precision_recall_comparison_v2_v3.png
 │       └── imbalanced dataset results/
 │           ├── baseline_imbalanced_evaluation_report.txt
 │           └── imbalanced_report.txt
