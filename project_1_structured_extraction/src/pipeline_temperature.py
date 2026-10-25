@@ -112,7 +112,7 @@ def update_comparison_file(metrics):
     print(f"Temperature comparison updated: '{COMPARISON_CSV}'")
 
 
-def run_extraction_pipeline(temperature):
+def run_extraction_pipeline(temperature, prompt_version="v2"):
     if not os.path.exists(INPUT_CSV):
         print(
             f"Error: Input file '{INPUT_CSV}' not found. "
@@ -196,8 +196,9 @@ def run_extraction_pipeline(temperature):
     # Use a temperature-specific filename so the old extracted_results.csv
     # and results from other temperature runs are never overwritten.
     temp_label = f"{float(temperature):.1f}"
+    # Çıktı dosya adını versiyona göre ayırıyoruz:
     output_csv = os.path.join(
-        PROCESSED_DIR, f"extracted_results_temp_{temp_label}.csv"
+    PROCESSED_DIR, f"extracted_results_{prompt_version}_temp_{temp_label}.csv"
     )
     out_df.to_csv(output_csv, index=False, encoding="utf-8")
 
@@ -209,10 +210,9 @@ def run_extraction_pipeline(temperature):
     for key, value in metrics.items():
         print(f"  {key}: {value}")
 
-
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Run Project 1 extraction at a selected temperature."
+        description="Run Project 1 extraction with temperature and prompt versioning."
     )
     parser.add_argument(
         "--temperature",
@@ -225,6 +225,13 @@ def parse_args():
         action="store_true",
         help="Run the comparison values: 0.0, 0.3, 0.7, and 1.0.",
     )
+    parser.add_argument(
+        "--prompt-version",
+        type=str,
+        default="v3",
+        choices=["v1", "v2", "v3"],
+        help="Prompt version for ablation study (v1: Baseline, v2: Binary, v3: Heuristic-guided; default: v3).",
+    )
     return parser.parse_args()
 
 
@@ -234,4 +241,4 @@ if __name__ == "__main__":
         TEMPERATURES_TO_COMPARE if args.all_temperatures else [args.temperature]
     )
     for temp in temperatures:
-        run_extraction_pipeline(temp)
+        run_extraction_pipeline(temp, prompt_version=args.prompt_version)
