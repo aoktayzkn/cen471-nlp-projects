@@ -1,0 +1,5 @@
+temperature,samples,raw_json_parse_first_try_rate,parser_validation_success_rate,accuracy,macro_f1_positive_negative,average_latency_ms
+0.0,200,1.0,1.0,0.96,0.96,719.63
+0.3,200,1.0,1.0,0.9,0.9203,980.16
+0.7,200,1.0,1.0,0.895,0.9174,802.56
+1.0,200,1.0,1.0,0.905,0.9257,779.03
