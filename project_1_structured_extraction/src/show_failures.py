@@ -6,6 +6,7 @@ Run from the repository root (after pipeline_settings.py):
     python project_1_structured_extraction/src/show_failures.py
     python project_1_structured_extraction/src/show_failures.py --temperatures 0.0 1.0
     python project_1_structured_extraction/src/show_failures.py --prompt-style minimal
+    python project_1_structured_extraction/src/show_failures.py --prompt-style minimal --rescued
 
 Prints to the console and saves the same text to reports/format_failures*.txt.
 """
@@ -39,12 +40,26 @@ def failure_kind(error):
     return "other"
 
 
+def rescue_kind(raw):
+    text = raw.lstrip() if isinstance(raw, str) else ""
+    if text.startswith("```"):
+        return "markdown_fence"
+    if not text.startswith("{"):
+        return "text_before_json"
+    return "other"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--temperatures", type=float, nargs="+", default=[0.0, 1.0])
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--prompt-style", choices=["hardened", "minimal"], default="hardened")
     ap.add_argument("--setting", choices=["prompt_only", "schema"], default="prompt_only")
+    ap.add_argument(
+        "--rescued", action="store_true",
+        help="Also list outputs that json.loads rejected but the cleaning code recovered.",
+    )
+    ap.add_argument("--examples", type=int, default=3, help="Rescued examples to print per type.")
     args = ap.parse_args()
 
     suffix = "" if args.prompt_style == "hardened" else f"_{args.prompt_style}"
@@ -75,6 +90,28 @@ def main():
             lines.append(f"  true label: {r['ground_truth_sentiment']} | sentiment in output: {said}")
             lines.append(f"  raw output: {raw[:400]!r}")
             lines.append("")
+
+    if args.rescued:
+        for t in args.temperatures:
+            path = os.path.join(RESULT_DIR, f"{args.setting}{suffix}_T{t:.1f}_seed{args.seed}.csv")
+            df = pd.read_csv(path, keep_default_na=False, na_values=[""])
+            resc = df[(~df["raw_json_ok"].astype(bool)) & df["cleaned_json_ok"].astype(bool)]
+            lines.append("=" * 90)
+            lines.append(
+                f"RESCUED BY CLEANING: setting={args.setting} prompt={args.prompt_style} T={t}: "
+                f"{len(resc)}/{len(df)} outputs failed json.loads but parsed after cleaning"
+            )
+            lines.append("=" * 90)
+            by_type = {}
+            for _, r in resc.iterrows():
+                by_type.setdefault(rescue_kind(r["raw_output"]), []).append(r)
+            lines.append("By type: " + (", ".join(f"{k}={len(v)}" for k, v in sorted(by_type.items())) or "none"))
+            lines.append("")
+            for kind, rows in sorted(by_type.items()):
+                for r in rows[: args.examples]:
+                    lines.append(f"[id {int(r['id'])}] type={kind}")
+                    lines.append(f"  raw output: {str(r['raw_output'])[:300]!r}")
+                    lines.append("")
 
     if len(args.temperatures) > 1:
         common = set.intersection(*failing_ids.values())
