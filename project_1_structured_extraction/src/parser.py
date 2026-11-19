@@ -85,3 +85,73 @@ def parse_and_validate_json(
         return False, None, "'entities' field must be a list."
 
     return True, data, ""
+
+# ==============================================================================
+# STAGE-WISE PARSING + STRICT SCHEMA CHECK (used by pipeline_settings.py)
+# These helpers do NOT change the behaviour of parse_and_validate_json above.
+# ==============================================================================
+STRICT_CATEGORIES = [
+    "Action", "Comedy", "Drama", "Horror", "Sci-Fi",
+    "Romance", "Thriller", "Documentary", "Animation", "Other",
+]
+STRICT_SENTIMENTS = ["positive", "negative"]
+
+
+def parse_json_stages(raw_text: Any) -> Dict[str, Any]:
+    """Report parsing success at two separate stages.
+
+    raw_ok     : json.loads(raw_text) succeeds directly, BEFORE any cleaning.
+    cleaned_ok : after clean_raw_output() (strip ``` fences) and, if needed, extracting
+                 the first {...} block (drops conversational text around the JSON).
+    """
+    if not isinstance(raw_text, str):
+        return {"raw_ok": False, "cleaned_ok": False, "data": None, "error": "Output is not a string."}
+
+    raw_ok = False
+    try:
+        json.loads(raw_text)
+        raw_ok = True
+    except json.JSONDecodeError:
+        pass
+
+    cleaned = clean_raw_output(raw_text)
+    data, error = None, ""
+    try:
+        data = json.loads(cleaned)
+    except json.JSONDecodeError:
+        match = re.search(r"\{.*\}", cleaned, re.DOTALL)
+        if match is None:
+            error = "No JSON object structure found."
+        else:
+            try:
+                data = json.loads(match.group(0))
+            except json.JSONDecodeError as err:
+                error = f"JSON decode failed: {err}"
+
+    cleaned_ok = isinstance(data, dict)
+    if data is not None and not cleaned_ok:
+        error = "Parsed JSON is not an object/dictionary."
+        data = None
+    return {"raw_ok": raw_ok, "cleaned_ok": cleaned_ok, "data": data, "error": error}
+
+
+def strict_schema_check(data: Optional[Dict[str, Any]]) -> Tuple[bool, str]:
+    """All required fields present with correct types AND allowed values.
+
+    Unlike parse_and_validate_json, nothing is silently repaired
+    (e.g. an unknown category is NOT coerced to "Other"; it is a violation).
+    Extra keys are tolerated.
+    """
+    if not isinstance(data, dict):
+        return False, "not an object"
+    missing = {"category", "sentiment", "entities"} - set(data)
+    if missing:
+        return False, f"missing keys: {sorted(missing)}"
+    if data["category"] not in STRICT_CATEGORIES:
+        return False, f"category not allowed: {data['category']!r}"
+    if data["sentiment"] not in STRICT_SENTIMENTS:
+        return False, f"sentiment not allowed: {data['sentiment']!r}"
+    ents = data["entities"]
+    if not isinstance(ents, list) or not all(isinstance(e, str) for e in ents):
+        return False, "entities must be a list of strings"
+    return True, ""
