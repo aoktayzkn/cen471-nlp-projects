@@ -152,11 +152,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--temperature", type=float, default=0.0)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--prompt-style", choices=["hardened", "minimal"], default="hardened")
     args = ap.parse_args()
 
     frames = {}
     for s in SETTINGS:
-        path = os.path.join(RESULT_DIR, f"{s}_T{args.temperature:.1f}_seed{args.seed}.csv")
+        suffix = "" if args.prompt_style == "hardened" else f"_{args.prompt_style}"
+        path = os.path.join(RESULT_DIR, f"{s}{suffix}_T{args.temperature:.1f}_seed{args.seed}.csv")
         if not os.path.exists(path):
             raise SystemExit(f"Missing {path}. Run pipeline_settings.py first.")
         frames[s] = pd.read_csv(path, keep_default_na=False, na_values=[""])
@@ -173,13 +175,13 @@ def main():
     paired = paired_report(frames["prompt_only"], frames["schema"])
 
     pd.set_option("display.width", 200)
-    print(f"\n=== T={args.temperature}, seed={args.seed} ===")
+    print(f"\n=== prompt={args.prompt_style}, T={args.temperature}, seed={args.seed} ===")
     print(table.T.to_string(float_format=lambda x: f"{x:.4f}"))
     print("\nPaired comparison:", json.dumps(paired, indent=2))
 
     os.makedirs(os.path.dirname(REPORT_MD), exist_ok=True)
     with open(REPORT_MD, "a", encoding="utf-8") as f:
-        f.write(f"\n## T={args.temperature}, seed={args.seed}\n\n")
+        f.write(f"\n## prompt={args.prompt_style}, T={args.temperature}, seed={args.seed}\n\n")
         try:
             f.write(table.T.to_markdown(floatfmt=".4f"))
         except ImportError:  # `tabulate` not installed

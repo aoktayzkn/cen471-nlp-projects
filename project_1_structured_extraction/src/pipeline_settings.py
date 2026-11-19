@@ -13,6 +13,7 @@ Run from the repository root:
     python project_1_structured_extraction/src/pipeline_settings.py --setting both
     python project_1_structured_extraction/src/pipeline_settings.py --setting both --temperature 1.0
     python project_1_structured_extraction/src/pipeline_settings.py --setting prompt_only --limit 5
+    python project_1_structured_extraction/src/pipeline_settings.py --setting both --prompt-style minimal
 """
 
 import argparse
@@ -47,6 +48,34 @@ DEFAULT_NUM_CTX = 4096
 # done_reason == "length" was cut off and is logged as such.
 DEFAULT_NUM_PREDICT = 512
 
+# Prompt styles (2x2 design: prompt style x {prompt_only, schema}).
+#   hardened : the active v3 prompt, which explicitly forbids fences / filler text.
+#   minimal  : the SAME classification/extraction rules, but the output-format
+#              instructions are relaxed to a plain "return JSON" request. This is how
+#              a typical first-attempt prompt looks; it isolates the effect of the
+#              format instructions without touching the task rules.
+_MINIMAL_EDITS = [
+    (
+        "You must return ONLY a single valid JSON object strictly matching this schema:",
+        "Return the result as a JSON object with this schema:",
+    ),
+    (
+        "4. Return raw JSON only. Absolutely NO markdown backticks (no ``` or ```json) and NO conversational filler.\n",
+        "",
+    ),
+]
+
+
+def get_system_prompt_for(style):
+    if style == "hardened":
+        return SYSTEM_PROMPT
+    prompt = SYSTEM_PROMPT
+    for old, new in _MINIMAL_EDITS:
+        assert old in prompt, "Prompt text changed; update _MINIMAL_EDITS."
+        prompt = prompt.replace(old, new)
+    return prompt
+
+
 JSON_SCHEMA = {
     "type": "object",
     "properties": {
@@ -59,14 +88,14 @@ JSON_SCHEMA = {
 }
 
 
-def call_model(review_text, setting, temperature, seed, num_ctx, num_predict):
+def call_model(review_text, setting, temperature, seed, num_ctx, num_predict, system_prompt=SYSTEM_PROMPT):
     """One Ollama call. Returns (raw_output, done_reason)."""
     import ollama  # imported lazily so the module can be tested without Ollama
 
     kwargs = dict(
         model=MODEL_NAME,
         messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "system", "content": system_prompt},
             {"role": "user", "content": build_user_prompt(review_text)},
         ],
         options={
@@ -92,7 +121,9 @@ def collect_run_metadata(args):
         "seed": args.seed,
         "num_ctx": args.num_ctx,
         "num_predict": args.num_predict,
-        "system_prompt_chars": len(SYSTEM_PROMPT),
+        "prompt_style": args.prompt_style,
+        "system_prompt_chars": len(get_system_prompt_for(args.prompt_style)),
+        "system_prompt": get_system_prompt_for(args.prompt_style),
         "input_csv": INPUT_CSV,
     }
     try:
@@ -113,13 +144,22 @@ def collect_run_metadata(args):
     return meta
 
 
+def style_suffix(style):
+    """Hardened (main experiment) keeps the original file names; minimal adds a suffix."""
+    return "" if style == "hardened" else f"_{style}"
+
+
 def run_setting(df, setting, args):
     rows = []
-    print(f"\n=== setting={setting} | T={args.temperature} | seed={args.seed} | n={len(df)} ===")
+    system_prompt = get_system_prompt_for(args.prompt_style)
+    print(
+        f"\n=== setting={setting} | prompt={args.prompt_style} | "
+        f"T={args.temperature} | seed={args.seed} | n={len(df)} ==="
+    )
 
     # Warm-up call so the first row's latency does not include model loading.
     try:
-        call_model("Warm-up.", setting, args.temperature, args.seed, args.num_ctx, 16)
+        call_model("Warm-up.", setting, args.temperature, args.seed, args.num_ctx, 16, system_prompt)
     except Exception as exc:  # noqa: BLE001
         print(f"[warn] warm-up failed: {exc}")
 
@@ -127,7 +167,8 @@ def run_setting(df, setting, args):
         start = time.perf_counter()
         try:
             raw, done_reason = call_model(
-                row["text"], setting, args.temperature, args.seed, args.num_ctx, args.num_predict
+                row["text"], setting, args.temperature, args.seed, args.num_ctx, args.num_predict,
+                system_prompt,
             )
             call_error = ""
         except Exception as exc:  # noqa: BLE001
@@ -142,6 +183,7 @@ def run_setting(df, setting, args):
             {
                 "id": row["id"],
                 "setting": setting,
+                "prompt_style": args.prompt_style,
                 "temperature": args.temperature,
                 "seed": args.seed,
                 "ground_truth_sentiment": row["ground_truth_sentiment"],
@@ -166,7 +208,7 @@ def run_setting(df, setting, args):
 
     out = pd.DataFrame(rows)
     os.makedirs(OUT_DIR, exist_ok=True)
-    path = os.path.join(OUT_DIR, f"{setting}_T{args.temperature:.1f}_seed{args.seed}.csv")
+    path = os.path.join(OUT_DIR, f"{setting}{style_suffix(args.prompt_style)}_T{args.temperature:.1f}_seed{args.seed}.csv")
     out.to_csv(path, index=False, encoding="utf-8")
     print(f"Saved: {path}")
     return out
@@ -179,6 +221,10 @@ def parse_args():
     p.add_argument("--seed", type=int, default=DEFAULT_SEED)
     p.add_argument("--num-ctx", type=int, default=DEFAULT_NUM_CTX)
     p.add_argument("--num-predict", type=int, default=DEFAULT_NUM_PREDICT)
+    p.add_argument(
+        "--prompt-style", choices=["hardened", "minimal"], default="hardened",
+        help="hardened = main experiment; minimal = format-instruction ablation.",
+    )
     p.add_argument("--limit", type=int, default=None, help="Only the first N rows (smoke test).")
     p.add_argument("--ids", type=str, default=None, help="Text file with one sample id per line.")
     return p.parse_args()
@@ -199,7 +245,7 @@ def main():
 
     os.makedirs(OUT_DIR, exist_ok=True)
     meta = collect_run_metadata(args)
-    meta_path = os.path.join(OUT_DIR, f"run_meta_T{args.temperature:.1f}_seed{args.seed}.json")
+    meta_path = os.path.join(OUT_DIR, f"run_meta{style_suffix(args.prompt_style)}_T{args.temperature:.1f}_seed{args.seed}.json")
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2, ensure_ascii=False)
     print("Run metadata:", json.dumps(meta, indent=2, ensure_ascii=False))
