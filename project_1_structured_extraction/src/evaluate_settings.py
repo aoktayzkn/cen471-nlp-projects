@@ -22,8 +22,12 @@ import json
 import os
 import re
 import string
+import sys
 
 import pandas as pd
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
+from project_1_structured_extraction.src.parser import parse_json_stages  # noqa: E402
 
 RESULT_DIR = "project_1_structured_extraction/data/processed/settings"
 GOLD_CSV = "project_1_structured_extraction/data/annotation/entity_gold.csv"
@@ -98,8 +102,19 @@ def sentiment_metrics(df):
     return float((y == p).mean()), float(sum(f1s) / 2)
 
 
+def salvaged_sentiment(raw):
+    """Sentiment from the raw output whenever the sentiment field itself is valid,
+    even if another field (e.g. category) violates the schema."""
+    data = parse_json_stages(raw if isinstance(raw, str) else "")["data"]
+    value = data.get("sentiment") if isinstance(data, dict) else None
+    return value if value in ("positive", "negative") else ""
+
+
 def evaluate_one(df, gold):
     acc, macro = sentiment_metrics(df)
+    y = df["ground_truth_sentiment"].astype(str).str.lower()
+    valid = df["schema_valid"].astype(bool)
+    pred = df["sentiment"].fillna("").astype(str).str.lower()
     out = {
         "n": len(df),
         "raw_json_rate": df["raw_json_ok"].astype(bool).mean(),
@@ -107,6 +122,11 @@ def evaluate_one(df, gold):
         "schema_valid_rate": df["schema_valid"].astype(bool).mean(),
         "accuracy": acc,
         "macro_f1": macro,
+        # accuracy above counts any schema-invalid row as wrong (end-to-end view).
+        # The two below separate "format failure" from "classification quality":
+        "accuracy_sentiment_salvaged": float((y == df["raw_output"].apply(salvaged_sentiment)).mean()),
+        "n_schema_valid": int(valid.sum()),
+        "accuracy_on_schema_valid": float((y[valid] == pred[valid]).mean()) if valid.any() else 0.0,
         "truncated_outputs": int((df["done_reason"] == "length").sum()),
         "mean_latency_ms": df["latency_ms"].mean(),
     }
