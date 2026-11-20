@@ -144,6 +144,13 @@ def collect_run_metadata(args):
     return meta
 
 
+def output_dir(args):
+    """Partial runs (--limit / --ids) go to settings/partial/ so that a quick smoke test can
+    never overwrite the real 200-sample results."""
+    partial = bool(args.limit or args.ids)
+    return os.path.join(OUT_DIR, "partial") if partial else OUT_DIR
+
+
 def style_suffix(style):
     """Hardened (main experiment) keeps the original file names; minimal adds a suffix."""
     return "" if style == "hardened" else f"_{style}"
@@ -207,8 +214,9 @@ def run_setting(df, setting, args):
         )
 
     out = pd.DataFrame(rows)
-    os.makedirs(OUT_DIR, exist_ok=True)
-    path = os.path.join(OUT_DIR, f"{setting}{style_suffix(args.prompt_style)}_T{args.temperature:.1f}_seed{args.seed}.csv")
+    out_dir = output_dir(args)
+    os.makedirs(out_dir, exist_ok=True)
+    path = os.path.join(out_dir, f"{setting}{style_suffix(args.prompt_style)}_T{args.temperature:.1f}_seed{args.seed}.csv")
     out.to_csv(path, index=False, encoding="utf-8")
     print(f"Saved: {path}")
     return out
@@ -243,9 +251,11 @@ def main():
         half = max(args.limit // 2, 1)
         df = pd.concat([g.head(half) for _, g in df.groupby("ground_truth_sentiment")])
 
-    os.makedirs(OUT_DIR, exist_ok=True)
+    if args.limit or args.ids:
+        print(f"[partial run] results go to {output_dir(args)} (the real results are not touched).")
+    os.makedirs(output_dir(args), exist_ok=True)
     meta = collect_run_metadata(args)
-    meta_path = os.path.join(OUT_DIR, f"run_meta{style_suffix(args.prompt_style)}_T{args.temperature:.1f}_seed{args.seed}.json")
+    meta_path = os.path.join(output_dir(args), f"run_meta{style_suffix(args.prompt_style)}_T{args.temperature:.1f}_seed{args.seed}.json")
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2, ensure_ascii=False)
     print("Run metadata:", json.dumps(meta, indent=2, ensure_ascii=False))
