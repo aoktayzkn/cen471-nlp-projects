@@ -1,0 +1,87 @@
+==========================================================================================
+setting=prompt_only prompt=minimal T=0.0 seed=42: 4/200 outputs invalid
+==========================================================================================
+By type: invalid_category=3, unparsable_json=1
+
+[id 99] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '```json\n{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Singin\' in the Rain", "Cover Girl", "Genius", "Phil Silvers", "Gene Kelly", "Rita Hayworth", "Danny MacGuire", "Noel Wheaton", "John Coudair", "Rusty Parker", "Debbie Reynolds"]\n}\n```'
+
+[id 100] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Rita Hayworth", "Gene Kelly", "Phil Silvers", "Eve Arden"]\n}'
+
+[id 136] type=unparsable_json
+  error     : JSON decode failed: Expecting ',' delimiter: line 4 column 109 (char 164)
+  true label: positive | sentiment in output: None
+  raw output: '```json\n{\n  "category": "Animation",\n  "sentiment": "negative",\n  "entities": ["Montreal Canadians", "New York Yankees", "Dallas Cowboys", "Toronto Maple Leafs", "Maurice "the Rocket" Richard"]\n}\n```'
+
+[id 159] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: positive | sentiment in output: positive
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "positive",\n  "entities": ["Henry Mancini", "Julie Andrews", "Blake Edwards"]\n}'
+
+==========================================================================================
+setting=prompt_only prompt=minimal T=1.0 seed=42: 5/200 outputs invalid
+==========================================================================================
+By type: invalid_category=4, unparsable_json=1
+
+[id 34] type=invalid_category
+  error     : category not allowed: 'Crime'
+  true label: negative | sentiment in output: negative
+  raw output: '```json\n{\n  "category": "Crime",\n  "sentiment": "negative",\n  "entities": ["Ice-T", "Corrupt", "other actors/actresses"]\n}\n```'
+
+[id 99] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Phil Silvers", "Donald O\'Connor", "Gene Kelly", "Rita Hayworth", "Debbie Reynolds", "Rusty Parker", "Danny MacGuire", "Noel Wheaton", "John Coudair"]\n}'
+
+[id 100] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Rita Hayworth", "Gene Kelly", "Phil Silvers", "Eve Arden"]\n}'
+
+[id 136] type=unparsable_json
+  error     : JSON decode failed: Expecting ',' delimiter: line 4 column 99 (char 154)
+  true label: positive | sentiment in output: None
+  raw output: '{\n  "category": "Animation",\n  "sentiment": "negative",\n  "entities": ["Montreal Canadians", "New York Yankees", "Dallas Cowboys", "Canadians", "Maurice "the Rocket" Richard", "Toronto Maple Leafs"]\n}'
+
+[id 161] type=invalid_category
+  error     : category not allowed: 'Comedy | Drama | Musical'
+  true label: positive | sentiment in output: positive
+  raw output: '```json\n{\n  "category": "Comedy | Drama | Musical",\n  "sentiment": "positive",\n  "entities": ["Blake Edwards", "Julie Andrews", "Rock Hudson"]\n}\n```'
+
+==========================================================================================
+RESCUED BY CLEANING: setting=prompt_only prompt=minimal T=0.0: 71/200 outputs failed json.loads but parsed after cleaning
+==========================================================================================
+By type: markdown_fence=71
+
+[id 1] type=markdown_fence
+  raw output: '```json\n{\n  "category": "Sci-Fi",\n  "sentiment": "negative",\n  "entities": ["Babylon 5", "Star Trek", "Gene Roddenberry\'s Earth"]\n}\n```'
+
+[id 3] type=markdown_fence
+  raw output: '```json\n{\n  "category": "Action",\n  "sentiment": "negative",\n  "entities": ["Van Dam"]\n}\n```'
+
+[id 6] type=markdown_fence
+  raw output: '```json\n{\n  "category": "Action",\n  "sentiment": "negative",\n  "entities": ["The Shepherd", "Hard Target", "Universal Soldier", "Van Damme"]\n}\n```'
+
+==========================================================================================
+RESCUED BY CLEANING: setting=prompt_only prompt=minimal T=1.0: 91/200 outputs failed json.loads but parsed after cleaning
+==========================================================================================
+By type: markdown_fence=91
+
+[id 2] type=markdown_fence
+  raw output: '```json\n{\n  "category": "Action",\n  "sentiment": "positive",\n  "entities": ["Van Damme", "angry veterans", "terrorist", "crooked cops", "indifferent feds", "bitchy tough lady station head", "crooked politician", "fat federale", "main villains"]\n}\n```'
+
+[id 4] type=markdown_fence
+  raw output: '```json\n{\n  "category": "Action",\n  "sentiment": "negative",\n  "entities": ["Jack Robideaux", "Jean Claude Van Damme", "Benjamin Meyers", "Stephen Lord", "The Shepherd"]\n}\n```'
+
+[id 10] type=markdown_fence
+  raw output: '```json\n{\n  "category": "Action",\n  "sentiment": "negative",\n  "entities": ["Jean-Claude Van Damme"]\n}\n```'
+
+------------------------------------------------------------------------------------------
+Ids invalid at ALL listed temperatures: [99, 100, 136]
+  invalid only at T=0.0: [159]
+  invalid only at T=1.0: [34, 161]

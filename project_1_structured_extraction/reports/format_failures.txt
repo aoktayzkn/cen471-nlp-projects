@@ -1,0 +1,69 @@
+==========================================================================================
+setting=prompt_only prompt=hardened T=0.0 seed=42: 6/200 outputs invalid
+==========================================================================================
+By type: invalid_category=5, unparsable_json=1
+
+[id 34] type=invalid_category
+  error     : category not allowed: 'Crime'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Crime",\n  "sentiment": "negative",\n  "entities": ["Ice-T", "Corrupt", "other restaurant worker"]\n}'
+
+[id 99] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Singin\' in the Rain", "Cover Girl", "Phil Silvers", "Genius", "Donald O\'Connor", "Gene Kelly", "Rita Hayworth", "Debbie Reynolds", "Rusty Parker", "Danny MacGuire", "John Coudair", "Noel Wheaton"]\n}'
+
+[id 100] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Rita Hayworth", "Gene Kelly", "Phil Silvers", "Eve Arden"]\n}'
+
+[id 136] type=unparsable_json
+  error     : JSON decode failed: Expecting ',' delimiter: line 4 column 119 (char 174)
+  true label: positive | sentiment in output: None
+  raw output: '{\n  "category": "Animation",\n  "sentiment": "negative",\n  "entities": ["Montreal Canadians", "New York Yankees", "Dallas Cowboys", "Ottawa", "Toronto Maple Leafs", "Maurice "the Rocket" Richard"]\n}'
+
+[id 156] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: positive | sentiment in output: positive
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "positive",\n  "entities": ["Julie Andrews", "Blake Edwards", "Rock Hudson"]\n}'
+
+[id 159] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: positive | sentiment in output: positive
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "positive",\n  "entities": ["Henry Mancini", "Julie Andrews", "Blake Edwards"]\n}'
+
+==========================================================================================
+setting=prompt_only prompt=hardened T=1.0 seed=42: 5/200 outputs invalid
+==========================================================================================
+By type: invalid_category=4, unparsable_json=1
+
+[id 34] type=invalid_category
+  error     : category not allowed: 'Crime'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Crime",\n  "sentiment": "negative",\n  "entities": ["Ice-T", "Corrupt"]\n}'
+
+[id 99] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Gene Kelly", "Rita Hayworth", "Phil Silvers", "Danny MacGuire", "John Coudair", "Noel Wheaton"]\n}'
+
+[id 100] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: negative | sentiment in output: negative
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "negative",\n  "entities": ["Rita Hayworth", "Gene Kelly", "Phil Silvers", "Eve Arden"]\n}'
+
+[id 136] type=unparsable_json
+  error     : JSON decode failed: Expecting ',' delimiter: line 4 column 99 (char 154)
+  true label: positive | sentiment in output: None
+  raw output: '{\n  "category": "Animation",\n  "sentiment": "negative",\n  "entities": ["Montreal Canadians", "New York Yankees", "Dallas Cowboys", "Canadians", "Maurice "the Rocket" Richard", "Toronto Maple Leafs"]\n}'
+
+[id 156] type=invalid_category
+  error     : category not allowed: 'Musical'
+  true label: positive | sentiment in output: positive
+  raw output: '{\n  "category": "Musical",\n  "sentiment": "positive",\n  "entities": ["Julie Andrews", "Victor Victoria", "S.O.B.", "Mary Poppins", "Maria Van Trapp", "Rock Hudson"]\n}'
+
+------------------------------------------------------------------------------------------
+Ids invalid at ALL listed temperatures: [34, 99, 100, 136, 156]
+  invalid only at T=0.0: [159]
+  invalid only at T=1.0: none

@@ -1,0 +1,15 @@
+{
+  "model": "qwen2.5:7b",
+  "temperature": 0.0,
+  "seed": 42,
+  "num_ctx": 4096,
+  "num_predict": 512,
+  "prompt_style": "minimal",
+  "system_prompt_chars": 1695,
+  "system_prompt": "You are a specialized, high-precision NLP engine that extracts structured data from movie reviews.\nReturn the result as a JSON object with this schema:\n\n{\n  \"category\": \"Action | Comedy | Drama | Horror | Sci-Fi | Romance | Thriller | Documentary | Animation | Other\",\n  \"sentiment\": \"positive | negative\",\n  \"entities\": [\"string\"]\n}\n\nCRITICAL CLASSIFICATION & EXTRACTION RULES:\n1. 'sentiment' MUST be strictly one of: ['positive', 'negative'].\n   - POLARITY RESOLUTION & HEURISTICS:\n     a) RATING & NUMERICAL CUES: If the reviewer mentions an explicit low rating (e.g., 'give it a 3/10', 'not given a 1', '1 star'), classify as 'negative'.\n     b) SOLE REDEEMING FACTOR: If the author praises only ONE isolated aspect (e.g., superb acting by one actor, beautiful lead actress, good visuals) but criticizes the rest of the film as silly, unmemorable, or awful, the OVERALL sentiment is strictly 'negative'.\n     c) BALANCED REVIEWS: In reviews presenting both strengths and flaws, give greater weight to the final concluding verdict rather than introductory polite remarks.\n     d) Do NOT output 'neutral', 'mixed', or any other label.\n2. 'category' MUST be strictly one of: ['Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi', 'Romance', 'Thriller', 'Documentary', 'Animation', 'Other']. Assign the single most dominant genre. Do NOT output generic terms like 'movie' or 'film'.\n3. 'entities' MUST strictly contain specific proper nouns: real actors, directors, characters, or movie titles explicitly named.\n   - NOISE FILTER: Do NOT include descriptive phrases, review commentary (e.g., 'great acting', 'waste of time'), or general common nouns. If no specific named entities exist, provide [].\n",
+  "input_csv": "project_1_structured_extraction/data/raw/imdb_balanced_200.csv",
+  "ollama_version": "ollama version is 0.35.1",
+  "quantization_level": "Q4_K_M",
+  "parameter_size": "7.6B",
+  "model_family": "qwen2"
+}

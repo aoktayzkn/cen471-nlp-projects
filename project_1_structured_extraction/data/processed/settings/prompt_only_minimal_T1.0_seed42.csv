@@ -1,0 +1,1197 @@
+id,setting,prompt_style,temperature,seed,ground_truth_sentiment,raw_output,done_reason,call_error,raw_json_ok,cleaned_json_ok,schema_valid,schema_error,category,sentiment,entities_json,latency_ms
+1,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Sci-Fi"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Gene Roddenberry"", ""Earth""]
+}",stop,,True,True,True,,Sci-Fi,negative,"[""Gene Roddenberry"", ""Earth""]",544.16
+2,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Action"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Van Damme"", ""angry veterans"", ""terrorist"", ""crooked cops"", ""indifferent feds"", ""bitchy tough lady station head"", ""crooked politician"", ""fat federale"", ""main villains""]
+}
+```",stop,,False,True,True,,Action,positive,"[""Van Damme"", ""angry veterans"", ""terrorist"", ""crooked cops"", ""indifferent feds"", ""bitchy tough lady station head"", ""crooked politician"", ""fat federale"", ""main villains""]",1115.86
+3,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Van Dam""]
+}",stop,,True,True,True,,Action,negative,"[""Van Dam""]",426.14
+4,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Jack Robideaux"", ""Jean Claude Van Damme"", ""Benjamin Meyers"", ""Stephen Lord"", ""The Shepherd""]
+}
+```",stop,,False,True,True,,Action,negative,"[""Jack Robideaux"", ""Jean Claude Van Damme"", ""Benjamin Meyers"", ""Stephen Lord"", ""The Shepherd""]",838.19
+5,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Van Damme"", ""Bloodsport"", ""Wake of Death"", ""In hell"", ""Nowhere to Run""]
+}",stop,,True,True,True,,Action,positive,"[""Van Damme"", ""Bloodsport"", ""Wake of Death"", ""In hell"", ""Nowhere to Run""]",705.99
+6,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""The Shepherd"", ""Hard Target"", ""Universal Soldier"", ""John Woo"", ""Van Damme""]
+}",stop,,True,True,True,,Action,negative,"[""The Shepherd"", ""Hard Target"", ""Universal Soldier"", ""John Woo"", ""Van Damme""]",685.88
+7,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Isaac Florentine"", ""US Seals 2"", ""Cold Harvest"", ""Special Forces"", ""Undisputed 2"", ""The Shepherd"", ""Scott Adkins"", ""JCVD""]
+}",stop,,True,True,True,,Action,negative,"[""Isaac Florentine"", ""US Seals 2"", ""Cold Harvest"", ""Special Forces"", ""Undisputed 2"", ""The Shepherd"", ""Scott Adkins"", ""JCVD""]",985.85
+8,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Van Damme"", ""Undisputed 2"", ""Scott Adkins""]
+}",stop,,True,True,True,,Action,negative,"[""Van Damme"", ""Undisputed 2"", ""Scott Adkins""]",619.22
+9,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Van Damme"", ""Isaac Florentine"", ""Undisputed II""]
+}",stop,,True,True,True,,Action,negative,"[""Van Damme"", ""Isaac Florentine"", ""Undisputed II""]",635.4
+10,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Jean-Claude Van Damme""]
+}
+```",stop,,False,True,True,,Action,negative,"[""Jean-Claude Van Damme""]",571.47
+11,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Van Damme"", ""The Shepherd""]
+}
+```",stop,,False,True,True,,Action,negative,"[""Van Damme"", ""The Shepherd""]",553.33
+12,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Blind Date"", ""Columbia Pictures"", ""1934"", ""Ann Sothern"", ""Paul Kelly"", ""Neil Hamilton""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Blind Date"", ""Columbia Pictures"", ""1934"", ""Ann Sothern"", ""Paul Kelly"", ""Neil Hamilton""]",883.92
+13,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Comedy"",
+  ""sentiment"": ""negative"",
+  ""entities"": []
+}
+```",stop,,False,True,True,,Comedy,negative,[],467.18
+14,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Mogul Video"", ""Don't Look in the Attic"", ""villa"", ""Turin"", ""Italy"", ""séance""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Mogul Video"", ""Don't Look in the Attic"", ""villa"", ""Turin"", ""Italy"", ""séance""]",913.58
+15,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""You've seen it all before"", ""3 out of 10"", ""80's haunted house movies""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""You've seen it all before"", ""3 out of 10"", ""80's haunted house movies""]",780.44
+16,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Italian horror films"", ""week-old spaghetti sauce with rotting meatballs"", ""ghost"", ""DVD"", ""VHS transfer"", ""attic""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Italian horror films"", ""week-old spaghetti sauce with rotting meatballs"", ""ghost"", ""DVD"", ""VHS transfer"", ""attic""]",897.7
+17,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""A girl"", ""her two cousins"", ""one cousin's girlfriend"", ""the male cousins"", ""this weirdo guy""]
+}",stop,,True,True,True,,Horror,negative,"[""A girl"", ""her two cousins"", ""one cousin's girlfriend"", ""the male cousins"", ""this weirdo guy""]",788.06
+18,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Harry Potter"", ""rude mother"", ""old guy"", ""old lady"", ""18 year old guy"", ""awful lady"", ""80s""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Harry Potter"", ""rude mother"", ""old guy"", ""old lady"", ""18 year old guy"", ""awful lady"", ""80s""]",927.93
+19,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Rupert Grint"", ""Nicholas Farrell"", ""Laura Linney"", ""Julie Walters"", ""Evie Walton""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Rupert Grint"", ""Nicholas Farrell"", ""Laura Linney"", ""Julie Walters"", ""Evie Walton""]",870.21
+20,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Leonard Maltin"", ""Evie"", ""Laura"", ""Medusa"", ""Harry Potter"", ""Rupert Grint"", ""Julie Walters""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Leonard Maltin"", ""Evie"", ""Laura"", ""Medusa"", ""Harry Potter"", ""Rupert Grint"", ""Julie Walters""]",966.28
+21,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Bill McGhee"", ""Nurse Charlotte Beale"", ""Jesse Lee"", ""Committed""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Bill McGhee"", ""Nurse Charlotte Beale"", ""Jesse Lee"", ""Committed""]",768.94
+22,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Micheal Harvey"", ""Hugh Feagin"", ""Camilla Carr"", ""Gene Ross"", ""Rosie Holotik"", ""Annabelle Weenick"", ""Rhea MacAdams""]
+}",stop,,True,True,True,,Drama,negative,"[""Micheal Harvey"", ""Hugh Feagin"", ""Camilla Carr"", ""Gene Ross"", ""Rosie Holotik"", ""Annabelle Weenick"", ""Rhea MacAdams""]",1040.97
+23,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""The Forgotten"", ""Don't Look In The Basement"", ""The patients at the asylum"", ""Sam"", ""the old woman""]
+}",stop,,True,True,True,,Horror,negative,"[""The Forgotten"", ""Don't Look In The Basement"", ""The patients at the asylum"", ""Sam"", ""the old woman""]",792.57
+24,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Memento""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Memento""]",574.26
+25,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Nemesis Game"", ""Sara"", ""Vern"", ""Chez M"", ""riddlezone""]
+}",stop,,True,True,True,,Action,negative,"[""Nemesis Game"", ""Sara"", ""Vern"", ""Chez M"", ""riddlezone""]",757.54
+26,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Thriller"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Sarah"", ""Lion's Gate"", ""young boy""]
+}
+```",stop,,False,True,True,,Thriller,negative,"[""Sarah"", ""Lion's Gate"", ""young boy""]",674.67
+27,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Carly Pope"", ""Sara Novak"", ""Emily Gray""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Carly Pope"", ""Sara Novak"", ""Emily Gray""]",731.0
+28,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Trusted actors"", ""the directors or writers"", ""a woman"", ""Adrian Paul"", ""the original so-called criminal""]
+}",stop,,True,True,True,,Drama,negative,"[""Trusted actors"", ""the directors or writers"", ""a woman"", ""Adrian Paul"", ""the original so-called criminal""]",830.27
+29,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Carly Pope"", ""Rena Owen""]
+}",stop,,True,True,True,,Drama,negative,"[""Carly Pope"", ""Rena Owen""]",547.22
+30,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Other"",
+  ""sentiment"": ""negative"",
+  ""entities"": []
+}",stop,,True,True,True,,Other,negative,[],378.55
+31,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Comedy"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Lowe"", ""Camp"", ""St Augustine"", ""Joanie Cunningham""]
+}
+```",stop,,False,True,True,,Comedy,negative,"[""Lowe"", ""Camp"", ""St Augustine"", ""Joanie Cunningham""]",735.7
+32,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Comedy"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Bogdanovich"", ""this movie""]
+}",stop,,True,True,True,,Comedy,negative,"[""Bogdanovich"", ""this movie""]",598.46
+33,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""New Jack City"", ""Baby Boy"", ""Killa Season"", ""Hot Boyz"", ""SVU"", ""Urban Menace"", ""MJ (Silkk)"", ""Corrupt (Ice-T)"", ""Benny"", ""Jody""]
+}",stop,,True,True,True,,Action,negative,"[""New Jack City"", ""Baby Boy"", ""Killa Season"", ""Hot Boyz"", ""SVU"", ""Urban Menace"", ""MJ (Silkk)"", ""Corrupt (Ice-T)"", ""Benny"", ""Jody""]",1140.67
+34,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Crime"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Ice-T"", ""Corrupt"", ""other actors/actresses""]
+}
+```",stop,,False,True,False,category not allowed: 'Crime',,,[],686.98
+35,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""The Wrecking Crew (1999)"", ""Urban Menace (1999)"", ""Ice-T"", ""Silkk The Shocker"", ""Miss Jones"", ""TJ Storm"", ""Ernie Hudson""]
+}",stop,,True,True,True,,Action,negative,"[""The Wrecking Crew (1999)"", ""Urban Menace (1999)"", ""Ice-T"", ""Silkk The Shocker"", ""Miss Jones"", ""TJ Storm"", ""Ernie Hudson""]",1117.7
+36,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Other"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""ice-t""]
+}
+```",stop,,False,True,True,,Other,negative,"[""ice-t""]",525.19
+37,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Thriller"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Beware, My Lovely"", ""Harry Horner"", ""The Filmmakers"", ""Ida Lupino"", ""Robert Ryan"", ""Howard Wilton"", ""Helen Gordon""]
+}",stop,,True,True,True,,Thriller,negative,"[""Beware, My Lovely"", ""Harry Horner"", ""The Filmmakers"", ""Ida Lupino"", ""Robert Ryan"", ""Howard Wilton"", ""Helen Gordon""]",1009.08
+38,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Ida Lupino"", ""Robert Ryan""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Ida Lupino"", ""Robert Ryan""]",652.57
+39,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Mel Dinelli"", ""The Man"", ""Ida Lupino"", ""Robert Ryan"", ""Harry Horner""]
+}",stop,,True,True,True,,Drama,negative,"[""Mel Dinelli"", ""The Man"", ""Ida Lupino"", ""Robert Ryan"", ""Harry Horner""]",776.21
+40,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Thriller"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Howard Wilton"", ""Robert Ryan""]
+}
+```",stop,,False,True,True,,Thriller,negative,"[""Howard Wilton"", ""Robert Ryan""]",626.13
+41,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""This film""]
+}",stop,,True,True,True,,Horror,negative,"[""This film""]",515.35
+42,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Thriller"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Widow"", ""psychopath"", ""handyman""]
+}",stop,,True,True,True,,Thriller,negative,"[""Widow"", ""psychopath"", ""handyman""]",558.9
+43,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""This movie""]
+}",stop,,True,True,True,,Horror,negative,"[""This movie""]",507.89
+44,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Stupid Teenagers Must Die"", ""Blood and Guts""]
+}",stop,,True,True,True,,Horror,negative,"[""Stupid Teenagers Must Die"", ""Blood and Guts""]",656.86
+45,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Other"",
+  ""sentiment"": ""negative"",
+  ""entities"": []
+}",stop,,True,True,True,,Other,negative,[],441.35
+46,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""STMD!""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""STMD!""]",548.48
+47,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Comedy"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Honky Tonk Freeway"", ""Schlesinger"", ""Ticlaw""]
+}",stop,,True,True,True,,Comedy,negative,"[""Honky Tonk Freeway"", ""Schlesinger"", ""Ticlaw""]",724.36
+48,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Comedy"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""(*1/2)""]
+}
+```",stop,,False,True,True,,Comedy,negative,"[""(*1/2)""]",571.34
+49,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Patrick Stewart"", ""Dirty Dancing""]
+}",stop,,True,True,True,,Drama,negative,"[""Patrick Stewart"", ""Dirty Dancing""]",553.43
+50,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Romance"",
+  ""sentiment"": ""negative"",
+  ""entities"": []
+}
+```",stop,,False,True,True,,Romance,negative,[],436.94
+51,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Comedy"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Marina Zudina""]
+}",stop,,True,True,True,,Comedy,negative,"[""Marina Zudina""]",569.46
+52,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Blood Stalkers"", ""village idiot""]
+}",stop,,True,True,True,,Horror,negative,"[""Blood Stalkers"", ""village idiot""]",552.23
+53,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": []
+}
+```",stop,,False,True,True,,Horror,negative,[],523.09
+54,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Alvin Sargent"", ""Susan Sarandon"", ""Natalie Portman"", ""Anywhere But Here""]
+}",stop,,True,True,True,,Drama,negative,"[""Alvin Sargent"", ""Susan Sarandon"", ""Natalie Portman"", ""Anywhere But Here""]",760.87
+55,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Linda Blair"", ""David Hasselhoff"", ""Leslie Cumming"", ""Gary"", ""Leslie"", ""Freddie Brooks"", ""Rose Brooks"", ""Jane Brooks"", ""Tommy Brooks"", ""Robert Champagne"", ""Annie Ross"", ""Blair"", ""Michael Manchester""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Linda Blair"", ""David Hasselhoff"", ""Leslie Cumming"", ""Gary"", ""Leslie"", ""Freddie Brooks"", ""Rose Brooks"", ""Jane Brooks"", ""Tommy Brooks"", ""Robert Champagne"", ""Annie Ross"", ""Blair"", ""Michael Manchester""]",1411.17
+56,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""David Hasselhoff"", ""Witchery"", ""Joe 'D'Amato"", ""Fabrizio Laurenti"", ""Evil Dead"", ""La Casa""]
+}",stop,,True,True,True,,Horror,negative,"[""David Hasselhoff"", ""Witchery"", ""Joe 'D'Amato"", ""Fabrizio Laurenti"", ""Evil Dead"", ""La Casa""]",971.05
+57,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""EVIL DEAD"", ""WITCHERY"", ""GHOSTHOUSE"", ""THE OGRE: DEMONS 3""]
+}",stop,,True,True,True,,Horror,negative,"[""EVIL DEAD"", ""WITCHERY"", ""GHOSTHOUSE"", ""THE OGRE: DEMONS 3""]",854.11
+58,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Witchcraft/Witchery"", ""La Casa 4"", ""Gary"", ""Linda"", ""Rose Brooks"", ""Freddie"", ""Jane"", ""Tommy"", ""Leslie""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Witchcraft/Witchery"", ""La Casa 4"", ""Gary"", ""Linda"", ""Rose Brooks"", ""Freddie"", ""Jane"", ""Tommy"", ""Leslie""]",1111.26
+59,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Witchery"", ""Linda Blair"", ""David Hasselhof""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Witchery"", ""Linda Blair"", ""David Hasselhof""]",741.92
+60,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Hildegard Knef"", ""Witchery"", ""Linda Blair""]
+}",stop,,True,True,True,,Horror,negative,"[""Hildegard Knef"", ""Witchery"", ""Linda Blair""]",728.94
+61,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Linda Blair"", ""David Hasselhoff""]
+}",stop,,True,True,True,,Horror,negative,"[""Linda Blair"", ""David Hasselhoff""]",638.63
+62,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Hasselhoff"", ""Knight Rider"", ""old hotel""]
+}
+```",stop,,False,True,True,,Action,negative,"[""Hasselhoff"", ""Knight Rider"", ""old hotel""]",624.05
+63,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""old hotel""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""old hotel""]",556.04
+64,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""David Hasselhoff"", ""Leslie Cumming"", ""Linda Blair""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""David Hasselhoff"", ""Leslie Cumming"", ""Linda Blair""]",703.82
+65,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Hasslehoff""]
+}",stop,,True,True,True,,Horror,negative,"[""Hasslehoff""]",482.89
+66,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""David Hasselhoff"", ""Linda Blair"", ""Troll 3""]
+}",stop,,True,True,True,,Horror,negative,"[""David Hasselhoff"", ""Linda Blair"", ""Troll 3""]",662.41
+67,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Other"",
+  ""sentiment"": ""negative"",
+  ""entities"": []
+}",stop,,True,True,True,,Other,negative,[],384.17
+68,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Witchery"", ""The Exorcist"", ""The Omen"", ""Ten Little Indians"", ""Linda Blair"", ""David Hasselhoff""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Witchery"", ""The Exorcist"", ""The Omen"", ""Ten Little Indians"", ""Linda Blair"", ""David Hasselhoff""]",1027.32
+69,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Near Dark""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Near Dark""]",553.15
+70,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Action"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Blade"", ""Grace Jones"", ""Wesley Snipes""]
+}",stop,,True,True,True,,Action,negative,"[""Blade"", ""Grace Jones"", ""Wesley Snipes""]",685.62
+71,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Norman""]
+}",stop,,True,True,True,,Drama,negative,"[""Norman""]",546.36
+72,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Andre Braugher"", ""David Morse""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Andre Braugher"", ""David Morse""]",672.31
+73,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Frightmare"", ""Jeffery Combs"", ""Conrad Radzoff"", ""Ferdy Mayne""]
+}",stop,,True,True,True,,Horror,negative,"[""Frightmare"", ""Jeffery Combs"", ""Conrad Radzoff"", ""Ferdy Mayne""]",835.44
+74,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""1983's Frightmare"", ""Ferdinand Mayne"", ""Conrad Ratzoff"", ""Vincent Price""]
+}",stop,,True,True,True,,Horror,negative,"[""1983's Frightmare"", ""Ferdinand Mayne"", ""Conrad Ratzoff"", ""Vincent Price""]",915.54
+75,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Conrad Radzoff"", ""Horror Star"", ""Vincent Price"", ""Peter Cushing"", ""Boris Karloff""]
+}",stop,,True,True,True,,Horror,negative,"[""Conrad Radzoff"", ""Horror Star"", ""Vincent Price"", ""Peter Cushing"", ""Boris Karloff""]",899.57
+76,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Conrad Radzoff"", ""Ferdy Mayne"", ""Jeffrey Combs"", ""Troma""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Conrad Radzoff"", ""Ferdy Mayne"", ""Jeffrey Combs"", ""Troma""]",885.84
+77,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Conrad Radzoff"", ""Conrad"", ""Frightmare"", ""Jeffrey Combs"", ""Re-Animator""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Conrad Radzoff"", ""Conrad"", ""Frightmare"", ""Jeffrey Combs"", ""Re-Animator""]",946.64
+78,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Vincent Price"", ""over the top Vincent Price"", ""horror actor legend"", ""super horror actor""]
+}",stop,,True,True,True,,Horror,negative,"[""Vincent Price"", ""over the top Vincent Price"", ""horror actor legend"", ""super horror actor""]",785.73
+79,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Christopher Lee"", ""House of Death"", ""Frightmare"", ""Matlock"", ""Vincent Price"", ""Peter Cushing""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Christopher Lee"", ""House of Death"", ""Frightmare"", ""Matlock"", ""Vincent Price"", ""Peter Cushing""]",971.66
+80,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""The Crime Doctor's Courage"", ""Crime Doctor"", ""psychiatry practice"", ""mystery novelist"", ""police captain""]
+}",stop,,True,True,True,,Drama,negative,"[""The Crime Doctor's Courage"", ""Crime Doctor"", ""psychiatry practice"", ""mystery novelist"", ""police captain""]",910.91
+81,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Harmony Korine"", ""Bobbycrush"", ""The Virgin Suicides"", ""Sofia Coppola""]
+}",stop,,True,True,True,,Drama,negative,"[""Harmony Korine"", ""Bobbycrush"", ""The Virgin Suicides"", ""Sofia Coppola""]",814.45
+82,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Acolytes"", ""Cabin Fever"", ""Texas Chainsaw Massacre""]
+}",stop,,True,True,True,,Horror,negative,"[""Acolytes"", ""Cabin Fever"", ""Texas Chainsaw Massacre""]",725.52
+83,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""The kids""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""The kids""]",569.65
+84,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""teen slasher"", ""Brisbane""]
+}",stop,,True,True,True,,Horror,negative,"[""teen slasher"", ""Brisbane""]",576.8
+85,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""serial Killer""]
+}",stop,,True,True,True,,Horror,negative,"[""serial Killer""]",494.81
+86,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""The neighbours"", ""Joel Edgerton"", ""Australian writing"", ""The suburbs"", ""Film Finance"", ""Underground Film Festival in Melbourne"", ""ACMI""]
+}",stop,,True,True,True,,Horror,negative,"[""The neighbours"", ""Joel Edgerton"", ""Australian writing"", ""The suburbs"", ""Film Finance"", ""Underground Film Festival in Melbourne"", ""ACMI""]",1016.55
+87,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Reanhauer"", ""Bill Roy"", ""Sherri"", ""Jill Jacobson"", ""Tara"", ""Marilyn Joi"", ""Marcus Washington"", ""Prentiss Moulden"", ""Dr. Peter Desmond"", ""Geoffrey Land"", ""Al Adamson""]
+}",stop,,True,True,True,,Horror,negative,"[""Reanhauer"", ""Bill Roy"", ""Sherri"", ""Jill Jacobson"", ""Tara"", ""Marilyn Joi"", ""Marcus Washington"", ""Prentiss Moulden"", ""Dr. Peter Desmond"", ""Geoffrey Land"", ""Al Adamson""]",1345.06
+88,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Nurse Sherri"", ""Al Adamson"", ""Blood of Dracula's Castle"", ""Terror Hospital""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Nurse Sherri"", ""Al Adamson"", ""Blood of Dracula's Castle"", ""Terror Hospital""]",892.66
+89,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Al Adamson"", ""NURSE SHERRI"", ""Satan""]
+}",stop,,True,True,True,,Horror,negative,"[""Al Adamson"", ""NURSE SHERRI"", ""Satan""]",771.06
+90,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Terror Hospital""]
+}",stop,,True,True,True,,Horror,negative,"[""Terror Hospital""]",554.96
+91,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Hospital Of Terror""]
+}",stop,,True,True,True,,Horror,negative,"[""Hospital Of Terror""]",543.03
+92,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Black Voodoo"", ""Nurse Sherry""]
+}",stop,,True,True,True,,Horror,negative,"[""Black Voodoo"", ""Nurse Sherry""]",621.02
+93,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Maniratnam""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Maniratnam""]",607.7
+94,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Other"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Jacqueline Hyde"", ""Jackie Hyde"", ""Robert Donovan"", ""Malcolm Bennett"", ""Blythe Metz"", ""Rolfe Kanefsky""]
+}",stop,,True,True,True,,Other,negative,"[""Jacqueline Hyde"", ""Jackie Hyde"", ""Robert Donovan"", ""Malcolm Bennett"", ""Blythe Metz"", ""Rolfe Kanefsky""]",961.28
+95,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Horror"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Jacqueline Hyde"", ""Jack L"", ""Hyde"", ""Jekyll & Hyde"", ""Jackie Hyde"", ""Mr. Hyde"", ""grandfather""]
+}
+```",stop,,False,True,True,,Horror,negative,"[""Jacqueline Hyde"", ""Jack L"", ""Hyde"", ""Jekyll & Hyde"", ""Jackie Hyde"", ""Mr. Hyde"", ""grandfather""]",1019.2
+96,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Tessa"", ""Tracey Gold"", ""Brian Austin-Green""]
+}",stop,,True,True,True,,Drama,negative,"[""Tessa"", ""Tracey Gold"", ""Brian Austin-Green""]",702.63
+97,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Mr. Editor""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Mr. Editor""]",576.26
+98,prompt_only,minimal,1.0,42,negative,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Rita Hayworth"", ""Gene Kelly"", ""Phil Silvers"", ""Sgt. Bilko"", ""Singin' In The Rain""]
+}
+```",stop,,False,True,True,,Drama,negative,"[""Rita Hayworth"", ""Gene Kelly"", ""Phil Silvers"", ""Sgt. Bilko"", ""Singin' In The Rain""]",1035.22
+99,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Musical"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Phil Silvers"", ""Donald O'Connor"", ""Gene Kelly"", ""Rita Hayworth"", ""Debbie Reynolds"", ""Rusty Parker"", ""Danny MacGuire"", ""Noel Wheaton"", ""John Coudair""]
+}",stop,,True,True,False,category not allowed: 'Musical',,,[],1217.57
+100,prompt_only,minimal,1.0,42,negative,"{
+  ""category"": ""Musical"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Rita Hayworth"", ""Gene Kelly"", ""Phil Silvers"", ""Eve Arden""]
+}",stop,,True,True,False,category not allowed: 'Musical',,,[],755.4
+101,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Claudio Carvalho""]
+}",stop,,True,True,True,,Drama,positive,"[""Claudio Carvalho""]",552.4
+102,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Earth"", ""Indian filmmaker"", ""servant"", ""elderly matriarch""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Earth"", ""Indian filmmaker"", ""servant"", ""elderly matriarch""]",799.77
+103,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Deepa Mehta"", ""Sita"", ""Nita"", ""Radha"", ""Mazursky"", ""An Unmarried Woman"", ""Ashok"", ""Biji""]
+}",stop,,True,True,True,,Drama,positive,"[""Deepa Mehta"", ""Sita"", ""Nita"", ""Radha"", ""Mazursky"", ""An Unmarried Woman"", ""Ashok"", ""Biji""]",1108.11
+104,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Radha"", ""two protagonists""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Radha"", ""two protagonists""]",652.23
+105,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""A stunningly well-made film"", ""newlywed"", ""sister-in-law""]
+}",stop,,True,True,True,,Drama,positive,"[""A stunningly well-made film"", ""newlywed"", ""sister-in-law""]",677.29
+106,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Ramayana"", ""Delhi"", ""India""]
+}",stop,,True,True,True,,Drama,negative,"[""Ramayana"", ""Delhi"", ""India""]",666.37
+107,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Indians"", ""Indians"", ""Women"", ""Sexism"", ""misogyny"", ""ladies""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Indians"", ""Indians"", ""Women"", ""Sexism"", ""misogyny"", ""ladies""]",916.92
+108,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Deepa Mehta"", ""FIRE"", ""RADHA"", ""Sita"", ""Shabana Azmi"", ""Nandita Das""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Deepa Mehta"", ""FIRE"", ""RADHA"", ""Sita"", ""Shabana Azmi"", ""Nandita Das""]",991.77
+109,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Fire"", ""Water"", ""Mehta""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Fire"", ""Water"", ""Mehta""]",688.31
+110,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Fire"", ""Das"", ""Jeanne D' Arc"", ""Biruma no Tategoto"", ""Kurosawa""]
+}",stop,,True,True,True,,Drama,positive,"[""Fire"", ""Das"", ""Jeanne D' Arc"", ""Biruma no Tategoto"", ""Kurosawa""]",891.84
+111,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""modern Indian"", ""responsibility"", ""duty"", ""characters"", ""inner life""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""modern Indian"", ""responsibility"", ""duty"", ""characters"", ""inner life""]",744.6
+112,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Fire""]
+}",stop,,True,True,True,,Drama,positive,"[""Fire""]",494.09
+113,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Sita"", ""grandmother""]
+}",stop,,True,True,True,,Drama,positive,"[""Sita"", ""grandmother""]",599.93
+114,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Deepa Mehta"", ""The Characters"", ""The Grandmother"", ""The Movie""]
+}",stop,,True,True,True,,Drama,positive,"[""Deepa Mehta"", ""The Characters"", ""The Grandmother"", ""The Movie""]",717.51
+115,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Shabana Azmi"", ""Nandita Das""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Shabana Azmi"", ""Nandita Das""]",688.96
+116,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Deepa Mehta"", ""Water"", ""Fire"", ""1947: Earth"", ""At 99: A Portrait of Louise Tandy Murch"", ""Sam & Me"", ""Camilla"", ""Driving Miss Daisy"", ""Jessica Tandy""]
+}",stop,,True,True,True,,Drama,positive,"[""Deepa Mehta"", ""Water"", ""Fire"", ""1947: Earth"", ""At 99: A Portrait of Louise Tandy Murch"", ""Sam & Me"", ""Camilla"", ""Driving Miss Daisy"", ""Jessica Tandy""]",1387.41
+117,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": []
+}
+```",stop,,False,True,True,,Drama,positive,[],469.38
+118,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Deepa Mehta"", ""Fire"", ""Shabana Azmi"", ""Nandita Das"", ""A.R. Rahman""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Deepa Mehta"", ""Fire"", ""Shabana Azmi"", ""Nandita Das"", ""A.R. Rahman""]",952.08
+119,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""india""]
+}",stop,,True,True,True,,Drama,negative,"[""india""]",481.6
+120,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Fire"", ""Radha"", ""Sita"", ""Ashok"", ""Ms Mehta""]
+}",stop,,True,True,True,,Drama,positive,"[""Fire"", ""Radha"", ""Sita"", ""Ashok"", ""Ms Mehta""]",772.81
+121,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Fire"", ""Radha"", ""Sita"", ""Lord Ram"", ""Nandita Das"", ""Shabana Azmi""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Fire"", ""Radha"", ""Sita"", ""Lord Ram"", ""Nandita Das"", ""Shabana Azmi""]",968.58
+122,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""FIRE"", ""Mehta"", ""Jatin"", ""Ashok"", ""swami"", ""Radha"", ""Sita""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""FIRE"", ""Mehta"", ""Jatin"", ""Ashok"", ""swami"", ""Radha"", ""Sita""]",965.21
+123,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""this movie""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""this movie""]",564.53
+124,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Her Excellency"", ""Madam Shabana Azmi"", ""Fire"", ""Water""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Her Excellency"", ""Madam Shabana Azmi"", ""Fire"", ""Water""]",759.39
+125,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Tobias Wolff"", ""Von Ancken"", ""Tom Noonan""]
+}",stop,,True,True,True,,Drama,positive,"[""Tobias Wolff"", ""Von Ancken"", ""Tom Noonan""]",676.15
+126,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Bullet In The Brain"", ""teacher""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Bullet In The Brain"", ""teacher""]",653.57
+127,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""a jaded professor"", ""bank robbers"", ""a literature professor""]
+}",stop,,True,True,True,,Drama,positive,"[""a jaded professor"", ""bank robbers"", ""a literature professor""]",687.68
+128,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Noonan"", ""Picasso"", ""short film""]
+}",stop,,True,True,True,,Drama,positive,"[""Noonan"", ""Picasso"", ""short film""]",650.8
+129,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Tobias Wolff"", ""Tom Noonan""]
+}",stop,,True,True,True,,Drama,positive,"[""Tobias Wolff"", ""Tom Noonan""]",611.18
+130,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""writing teacher""]
+}",stop,,True,True,True,,Drama,positive,"[""writing teacher""]",439.77
+131,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Leonard Maltin"", ""Toronto jersey"", ""Montreal Canadians"", ""Maurice Richard"", ""Toronto Maple Leafs"", ""Red Sox"", ""Yankees""]
+}",stop,,True,True,True,,Animation,negative,"[""Leonard Maltin"", ""Toronto jersey"", ""Montreal Canadians"", ""Maurice Richard"", ""Toronto Maple Leafs"", ""Red Sox"", ""Yankees""]",995.46
+132,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Eatons catalogue"", ""pond hockey"", ""CBC"", ""Eatons"", ""Montreal habs""]
+}",stop,,True,True,True,,Animation,positive,"[""Eatons catalogue"", ""pond hockey"", ""CBC"", ""Eatons"", ""Montreal habs""]",787.88
+133,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Roch Carrier"", ""Canadian film""]
+}",stop,,True,True,True,,Animation,positive,"[""Roch Carrier"", ""Canadian film""]",528.7
+134,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Maurice \""Rocket\"" Richard"", ""NFB of C""]
+}",stop,,True,True,True,,Drama,positive,"[""Maurice \""Rocket\"" Richard"", ""NFB of C""]",653.74
+135,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Maurice Richard"", ""Montreal Canadiens"", ""Toronto Maple Leafs""]
+}",stop,,True,True,True,,Animation,positive,"[""Maurice Richard"", ""Montreal Canadiens"", ""Toronto Maple Leafs""]",624.31
+136,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""negative"",
+  ""entities"": [""Montreal Canadians"", ""New York Yankees"", ""Dallas Cowboys"", ""Canadians"", ""Maurice ""the Rocket"" Richard"", ""Toronto Maple Leafs""]
+}",stop,,False,False,False,"JSON decode failed: Expecting ',' delimiter: line 4 column 99 (char 154)",,,[],942.34
+137,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Documentary"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""NFBC"", ""Montreal Canadians"", ""5th grade teacher"", ""1987"", ""1986"", ""Canadians"", ""Hockey Hall of Fame"", ""Bell Centre"", ""Rexall Place"", ""Go Habs Go""]
+}
+```",stop,,False,True,True,,Documentary,positive,"[""NFBC"", ""Montreal Canadians"", ""5th grade teacher"", ""1987"", ""1986"", ""Canadians"", ""Hockey Hall of Fame"", ""Bell Centre"", ""Rexall Place"", ""Go Habs Go""]",1281.51
+138,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Sheldon Cohen"", ""Roch Carrier"", ""Maurice 'Rocket' Richard"", ""Montreal Canadiens"", ""Toronto Maple Leafs""]
+}",stop,,True,True,True,,Animation,positive,"[""Sheldon Cohen"", ""Roch Carrier"", ""Maurice 'Rocket' Richard"", ""Montreal Canadiens"", ""Toronto Maple Leafs""]",865.48
+139,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Roch Carrier"", ""Maurice Richard""]
+}
+```",stop,,False,True,True,,Animation,positive,"[""Roch Carrier"", ""Maurice Richard""]",671.48
+140,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""FAS"", ""Fetal Alcohol Syndrome"", ""Native Americans"", ""Smits""]
+}",stop,,True,True,True,,Drama,positive,"[""FAS"", ""Fetal Alcohol Syndrome"", ""Native Americans"", ""Smits""]",665.95
+141,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Fetal Alcohol Syndrome"", ""Rehab"", ""movie""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Fetal Alcohol Syndrome"", ""Rehab"", ""movie""]",697.65
+142,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Ottenbreit2""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Ottenbreit2""]",600.62
+143,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""FAE"", ""my son"", ""book"", ""movie"", ""my own use"", ""teachers"", ""copy"", ""team of doctor's"", ""special Ed teacher""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""FAE"", ""my son"", ""book"", ""movie"", ""my own use"", ""teachers"", ""copy"", ""team of doctor's"", ""special Ed teacher""]",1018.24
+144,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""A very good film"", ""fetal alcohol syndrome"", ""Adam"", ""Jimmie Smits"", ""This is an excellent movie"", ""special family"", ""thousands of families"", ""United States"", ""children"", ""world""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""A very good film"", ""fetal alcohol syndrome"", ""Adam"", ""Jimmie Smits"", ""This is an excellent movie"", ""special family"", ""thousands of families"", ""United States"", ""children"", ""world""]",1194.02
+145,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Adam"", ""Jimmy Smits""]
+}",stop,,True,True,True,,Drama,positive,"[""Adam"", ""Jimmy Smits""]",502.52
+146,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Bugs Bunny"", ""Acrobatty Bunny"", ""Big Top Bunny""]
+}",stop,,True,True,True,,Animation,positive,"[""Bugs Bunny"", ""Acrobatty Bunny"", ""Big Top Bunny""]",662.26
+147,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Bugs Bunny"", ""Nero the Lion"", ""Bob McKimson""]
+}",stop,,True,True,True,,Animation,positive,"[""Bugs Bunny"", ""Nero the Lion"", ""Bob McKimson""]",704.35
+148,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Bugs Bunny"", ""lion"", ""Nero""]
+}",stop,,True,True,True,,Animation,positive,"[""Bugs Bunny"", ""lion"", ""Nero""]",637.29
+149,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Bugs Bunny"", ""Nero"", ""Looney Tunes Golden Collection Volume 3""]
+}
+```",stop,,False,True,True,,Animation,positive,"[""Bugs Bunny"", ""Nero"", ""Looney Tunes Golden Collection Volume 3""]",757.23
+150,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Animation"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Robert McKimson"", ""Acrobatty Bunny"", ""Big Top Bunny"", ""Bugs Bunny"", ""lion"", ""Pinocchio"", ""Laugh Clown Laugh""]
+}
+```",stop,,False,True,True,,Animation,positive,"[""Robert McKimson"", ""Acrobatty Bunny"", ""Big Top Bunny"", ""Bugs Bunny"", ""lion"", ""Pinocchio"", ""Laugh Clown Laugh""]",1006.02
+151,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Rock Hudson"", ""Blake Edwards"", ""Pillow Talk"", ""Magnificent Obsession"", ""Giant""]
+}",stop,,True,True,True,,Drama,positive,"[""Julie Andrews"", ""Rock Hudson"", ""Blake Edwards"", ""Pillow Talk"", ""Magnificent Obsession"", ""Giant""]",874.66
+152,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lili Smith"", ""Lili Schmidt"", ""William Larrabee"", ""Larrabee"", ""Blake Edwards"", ""U.S. squadron"", ""German"", ""Germany"", ""WWI""]
+}",stop,,True,True,True,,Drama,positive,"[""Lili Smith"", ""Lili Schmidt"", ""William Larrabee"", ""Larrabee"", ""Blake Edwards"", ""U.S. squadron"", ""German"", ""Germany"", ""WWI""]",1099.79
+153,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Blake Edwards"", ""Julie Andrews"", ""Henry Mancini"", ""Inspector Clouseau"", ""Rock Hudson"", ""Victor/Victoria""]
+}",stop,,True,True,True,,Drama,positive,"[""Blake Edwards"", ""Julie Andrews"", ""Henry Mancini"", ""Inspector Clouseau"", ""Rock Hudson"", ""Victor/Victoria""]",916.38
+154,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Romance"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Darling Lili"", ""Julie Andrews"", ""Rock Hudson"", ""Blake Edwards""]
+}",stop,,True,True,True,,Romance,positive,"[""Darling Lili"", ""Julie Andrews"", ""Rock Hudson"", ""Blake Edwards""]",748.2
+155,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Romance"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Rock Hudson""]
+}",stop,,True,True,True,,Romance,positive,"[""Julie Andrews"", ""Rock Hudson""]",562.06
+156,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Julie"", ""Rock Hudson""]
+}",stop,,True,True,True,,Drama,positive,"[""Julie Andrews"", ""Julie"", ""Rock Hudson""]",656.44
+157,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Blake Edwards"", ""The Music"", ""WWI plane battles"", ""The sets and scenes"", ""Wounded soldiers"", ""Old cars"", ""WWI music""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Julie Andrews"", ""Blake Edwards"", ""The Music"", ""WWI plane battles"", ""The sets and scenes"", ""Wounded soldiers"", ""Old cars"", ""WWI music""]",1043.66
+158,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Comedy"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lili Smith /Schmidt"", ""Julie Andrews"", ""Blake Edwards"", ""Rock Hudson"", ""Victor/Victoria""]
+}
+```",stop,,False,True,True,,Comedy,positive,"[""Lili Smith /Schmidt"", ""Julie Andrews"", ""Blake Edwards"", ""Rock Hudson"", ""Victor/Victoria""]",934.28
+159,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Henry Mancini"", ""Julie Andrews"", ""Blake Edwards""]
+}",stop,,True,True,True,,Drama,positive,"[""Henry Mancini"", ""Julie Andrews"", ""Blake Edwards""]",627.33
+160,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Romance"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Rock Hudson"", ""Whistling Away the Dark""]
+}",stop,,True,True,True,,Romance,positive,"[""Julie Andrews"", ""Rock Hudson"", ""Whistling Away the Dark""]",639.1
+161,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Comedy | Drama | Musical"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Blake Edwards"", ""Julie Andrews"", ""Rock Hudson""]
+}
+```",stop,,False,True,False,category not allowed: 'Comedy | Drama | Musical',,,[],744.53
+162,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Romance"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews""]
+}
+```",stop,,False,True,True,,Romance,positive,"[""Julie Andrews""]",587.24
+163,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Director's Cut"", ""Rock""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Julie Andrews"", ""Director's Cut"", ""Rock""]",678.34
+164,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Rock Hudson"", ""Blake Edwards"", ""Darling Lili"", ""Whistling Away In The Dark""]
+}",stop,,True,True,True,,Drama,positive,"[""Julie Andrews"", ""Rock Hudson"", ""Blake Edwards"", ""Darling Lili"", ""Whistling Away In The Dark""]",834.67
+165,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""STAR!"", ""Darling Lili""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Julie Andrews"", ""STAR!"", ""Darling Lili""]",698.07
+166,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Julie Andrews"", ""Rock Hudson"", ""Whistling in the Dark""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Julie Andrews"", ""Rock Hudson"", ""Whistling in the Dark""]",745.03
+167,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""Rachel \""Nanny\"" Crosby"", ""Ruben"", ""Ruben Santiago-Hudson"", ""S. Epatha Merkerson""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Lackawanna Blues"", ""Rachel \""Nanny\"" Crosby"", ""Ruben"", ""Ruben Santiago-Hudson"", ""S. Epatha Merkerson""]",1048.2
+168,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""S. Ephata Merkerson"", ""Nanny"", ""George Wolf"", ""Ruben Santiago Hudson"", ""Mr. Wolf"", ""Ms. Crosby""]
+}",stop,,True,True,True,,Drama,positive,"[""S. Ephata Merkerson"", ""Nanny"", ""George Wolf"", ""Ruben Santiago Hudson"", ""Mr. Wolf"", ""Ms. Crosby""]",954.65
+169,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Ms. Merkerson"", ""Lt. on Law and Order"", ""HBO's Lackawanna Blues"", ""Nanny"", ""Jimmy Smits""]
+}",stop,,True,True,True,,Drama,positive,"[""Ms. Merkerson"", ""Lt. on Law and Order"", ""HBO's Lackawanna Blues"", ""Nanny"", ""Jimmy Smits""]",949.54
+170,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Epatha Merkerson"", ""Terrence Howard""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Epatha Merkerson"", ""Terrence Howard""]",680.25
+171,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Rachel \""Nanny\"" Crosby"", ""Lackawanna"", ""Black woman"", ""African Americans"", ""1950's"", ""segregation""]
+}",stop,,True,True,True,,Drama,positive,"[""Rachel \""Nanny\"" Crosby"", ""Lackawanna"", ""Black woman"", ""African Americans"", ""1950's"", ""segregation""]",974.17
+172,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Documentary"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""Santiago-Hudson""]
+}
+```",stop,,False,True,True,,Documentary,positive,"[""Lackawanna Blues"", ""Santiago-Hudson""]",690.2
+173,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Nanny"", ""Halfway house""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Nanny"", ""Halfway house""]",632.72
+174,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""S Eptath"", ""Mos Def"", ""Rosie Perez"", ""Nanny"", ""Jr""]
+}",stop,,True,True,True,,Drama,positive,"[""S Eptath"", ""Mos Def"", ""Rosie Perez"", ""Nanny"", ""Jr""]",775.65
+175,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Ruben Santiago Hudson"", ""Halle Berry"", ""Oprah"", ""Nanny"", ""Mrs Bill Crosby"", ""Pauline"", ""Lou Gosset""]
+}",stop,,True,True,True,,Drama,positive,"[""Ruben Santiago Hudson"", ""Halle Berry"", ""Oprah"", ""Nanny"", ""Mrs Bill Crosby"", ""Pauline"", ""Lou Gosset""]",978.45
+176,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Nanny"", ""Ruben""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Nanny"", ""Ruben""]",607.75
+177,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Ms. Merkerson"", ""the young man playing the young lead""]
+}",stop,,True,True,True,,Drama,positive,"[""Ms. Merkerson"", ""the young man playing the young lead""]",668.02
+178,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Fantastically"", ""this movie"", ""Black History month"", ""recent history"", ""child"", ""writer-in-the-making""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Fantastically"", ""this movie"", ""Black History month"", ""recent history"", ""child"", ""writer-in-the-making""]",904.25
+179,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""Macy Gray"", ""S. Epatha Merkerson"", ""Nanny"", ""Law & Order""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Lackawanna Blues"", ""Macy Gray"", ""S. Epatha Merkerson"", ""Nanny"", ""Law & Order""]",960.3
+180,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""big mama"", ""He"", ""black producer or directors""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Lackawanna Blues"", ""big mama"", ""He"", ""black producer or directors""]",810.35
+181,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""actors"", ""actress"", ""characters""]
+}",stop,,True,True,True,,Drama,positive,"[""Lackawanna Blues"", ""actors"", ""actress"", ""characters""]",702.14
+182,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Nanny"", ""Terrance Howard"", ""Ebony magazine"", ""Lakawanna Blue"", ""Mos Def""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Nanny"", ""Terrance Howard"", ""Ebony magazine"", ""Lakawanna Blue"", ""Mos Def""]",872.4
+183,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Outstanding cast"", ""Jeffrey Wright""]
+}",stop,,True,True,True,,Drama,positive,"[""Outstanding cast"", ""Jeffrey Wright""]",567.28
+184,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""S. Epatha Merkerson"", ""Ruben Santiago-Hudson""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Lackawanna Blues"", ""S. Epatha Merkerson"", ""Ruben Santiago-Hudson""]",829.28
+185,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""Nanny"", ""Marcus Franklin"", ""Macy Gray"", ""Ms. Merkerson"", ""Jeffery Wright"", ""Jimmy Smits"", ""Terrence Howard"", ""Delroy Lindo""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Lackawanna Blues"", ""Nanny"", ""Marcus Franklin"", ""Macy Gray"", ""Ms. Merkerson"", ""Jeffery Wright"", ""Jimmy Smits"", ""Terrence Howard"", ""Delroy Lindo""]",1256.39
+186,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Nanny"", ""S. Epatha Merkerson"", ""boarding house"", ""civil rights movement"", ""Vietnam War""]
+}",stop,,True,True,True,,Drama,positive,"[""Nanny"", ""S. Epatha Merkerson"", ""boarding house"", ""civil rights movement"", ""Vietnam War""]",839.1
+187,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""S. Epatha"", ""Macy Gray"", ""Mos Def"", ""Lou Gossett"", ""Jimmy Smits""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""S. Epatha"", ""Macy Gray"", ""Mos Def"", ""Lou Gossett"", ""Jimmy Smits""]",873.32
+188,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawana Blues"", ""HBO"", ""Halle Berry""]
+}",stop,,True,True,True,,Drama,positive,"[""Lackawana Blues"", ""HBO"", ""Halle Berry""]",667.96
+189,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Divine Ms Merkerson"", ""Spike Lee"", ""She's Gotta Have It"", ""Macy Gray""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Divine Ms Merkerson"", ""Spike Lee"", ""She's Gotta Have It"", ""Macy Gray""]",906.24
+190,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""S. Epatha Merkerson"", ""Ruben Santiago, Jr."", ""Nanny"", ""Marcus Franklin"", ""Mos Def"", ""Macy Gray"", ""Terrence Dashon Howard"", ""Rosie Perez"", ""Louis Gossett, Jr."", ""Liev Schreiber"", ""Jimmy Smits"", ""Ernie Hudson"", ""Delroy Lindo"", ""Patricia Wettig""]
+}",stop,,True,True,True,,Drama,positive,"[""S. Epatha Merkerson"", ""Ruben Santiago, Jr."", ""Nanny"", ""Marcus Franklin"", ""Mos Def"", ""Macy Gray"", ""Terrence Dashon Howard"", ""Rosie Perez"", ""Louis Gossett, Jr."", ""Liev Schreiber"", ""Jimmy Smits"", ""Ernie Hudson"", ""Delroy Lindo"", ""Patricia Wettig""]",1713.56
+191,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Ray"", ""The Aviator"", ""Nanny"", ""S. Epatha Merkerson""]
+}",stop,,True,True,True,,Drama,positive,"[""Ray"", ""The Aviator"", ""Nanny"", ""S. Epatha Merkerson""]",765.9
+192,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""LACKAWANNA BLUES"", ""Ruben Santiago-Hudson"", ""Rachel 'Nanny' Crosby"", ""Marcus Franklin"", ""S. Epatha Merkeson"", ""LAW & ORDER""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""LACKAWANNA BLUES"", ""Ruben Santiago-Hudson"", ""Rachel 'Nanny' Crosby"", ""Marcus Franklin"", ""S. Epatha Merkeson"", ""LAW & ORDER""]",1199.34
+193,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""Nanny"", ""Ruben Santiago-Hudson"", ""S. Epatha Merkerson"", ""Bill Crosby"", ""Terrence Howard""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Lackawanna Blues"", ""Nanny"", ""Ruben Santiago-Hudson"", ""S. Epatha Merkerson"", ""Bill Crosby"", ""Terrence Howard""]",1104.78
+194,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""Nanny"", ""Lackawanna, New York""]
+}",stop,,True,True,True,,Drama,positive,"[""Lackawanna Blues"", ""Nanny"", ""Lackawanna, New York""]",782.02
+195,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Lackawanna Blues"", ""Rachel Crosby"", ""Nanny"", ""S. Epatha Merkerson""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Lackawanna Blues"", ""Rachel Crosby"", ""Nanny"", ""S. Epatha Merkerson""]",894.68
+196,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [
+    ""Ruben Santiago-Hudson"",
+    ""LACKAWANNA BLUES"",
+    ""George C. Wolfe"",
+    ""Marcus Carl Franklin"",
+    ""S. Epatha Merkerson"",
+    ""Terrence Howard"",
+    ""Rosie Perez"",
+    ""Mos Def"",
+    ""Carmen Ejogo"",
+    ""Louis Gossett Jr."",
+    ""Jeffrey Wright"",
+    ""Ernie Hudson"",
+    ""Charlayne Woodward""
+  ]
+}
+```",stop,,False,True,True,,Drama,positive,"[""Ruben Santiago-Hudson"", ""LACKAWANNA BLUES"", ""George C. Wolfe"", ""Marcus Carl Franklin"", ""S. Epatha Merkerson"", ""Terrence Howard"", ""Rosie Perez"", ""Mos Def"", ""Carmen Ejogo"", ""Louis Gossett Jr."", ""Jeffrey Wright"", ""Ernie Hudson"", ""Charlayne Woodward""]",1970.11
+197,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""The Dresser"", ""Albert Finney"", ""Tom Courtenay"", ""Sir"", ""Norman"", ""King Lear""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""The Dresser"", ""Albert Finney"", ""Tom Courtenay"", ""Sir"", ""Norman"", ""King Lear""]",946.71
+198,prompt_only,minimal,1.0,42,positive,"```json
+{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""The Dresser"", ""Ronald Harwood"", ""Albert Finney"", ""Eileen Atkins"", ""Tom Courtenay"", ""Edward Fox"", ""Zena Walker"", ""Lockwood West"", ""Mr Davenport-Scott""]
+}
+```",stop,,False,True,True,,Drama,positive,"[""The Dresser"", ""Ronald Harwood"", ""Albert Finney"", ""Eileen Atkins"", ""Tom Courtenay"", ""Edward Fox"", ""Zena Walker"", ""Lockwood West"", ""Mr Davenport-Scott""]",1248.14
+199,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Courtney"", ""Finney""]
+}",stop,,True,True,True,,Drama,positive,"[""Courtney"", ""Finney""]",504.28
+200,prompt_only,minimal,1.0,42,positive,"{
+  ""category"": ""Drama"",
+  ""sentiment"": ""positive"",
+  ""entities"": [""Albert Finney"", ""Tom Jones"", ""Murder on the Orient Express"", ""Under the Volcano"", ""The Dresser"", ""Jeremy Irons"", ""Daniel Day-Lewis"", ""Anthony Hopkins"", ""Emma Thompson"", ""Glenda Jackson"", ""John Wayne"", ""Marisa Tomei"", ""Cousin Vinny""]
+}",stop,,True,True,True,,Drama,positive,"[""Albert Finney"", ""Tom Jones"", ""Murder on the Orient Express"", ""Under the Volcano"", ""The Dresser"", ""Jeremy Irons"", ""Daniel Day-Lewis"", ""Anthony Hopkins"", ""Emma Thompson"", ""Glenda Jackson"", ""John Wayne"", ""Marisa Tomei"", ""Cousin Vinny""]",1518.43
