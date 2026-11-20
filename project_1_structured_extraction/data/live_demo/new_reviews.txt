@@ -1,0 +1,14 @@
+# label: positive
+PASTE REVIEW 1 HERE (a review that is NOT in imdb_balanced_200.csv)
+---
+# label: negative
+PASTE REVIEW 2 HERE
+---
+# label: positive
+PASTE REVIEW 3 HERE (try a sarcastic or mixed review)
+---
+# label: negative
+PASTE REVIEW 4 HERE (try a film title that looks like an ordinary word, e.g. Popular, Corrupt)
+---
+# label: positive
+PASTE REVIEW 5 HERE (a review you expect the model to get wrong)
