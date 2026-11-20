@@ -110,6 +110,14 @@ def salvaged_sentiment(raw):
     return value if value in ("positive", "negative") else ""
 
 
+def salvaged_entities(raw):
+    """Entities from the raw output whenever the JSON parses, even if another field
+    (e.g. category) violates the schema. The main columns treat such rows as empty."""
+    data = parse_json_stages(raw if isinstance(raw, str) else "")["data"]
+    ents = data.get("entities") if isinstance(data, dict) else None
+    return [e for e in ents if isinstance(e, str)] if isinstance(ents, list) else []
+
+
 def evaluate_one(df, gold):
     acc, macro = sentiment_metrics(df)
     y = df["ground_truth_sentiment"].astype(str).str.lower()
@@ -135,11 +143,16 @@ def evaluate_one(df, gold):
         out["entity_n"] = len(sub)
         for name, lenient in (("strict", False), ("lenient", True)):
             tp = fp = fn = 0
+            stp = sfp = sfn = 0
             for _, r in sub.iterrows():
                 a, b, c = entity_counts(gold[r["id"]], json.loads(r["entities_json"]), lenient)
                 tp, fp, fn = tp + a, fp + b, fn + c
+                sa, sb, sc = entity_counts(gold[r["id"]], salvaged_entities(r["raw_output"]), lenient)
+                stp, sfp, sfn = stp + sa, sfp + sb, sfn + sc
             p, rec, f = prf(tp, fp, fn)
             out.update({f"ent_{name}_P": p, f"ent_{name}_R": rec, f"ent_{name}_F1": f})
+            # Same metric, but entities of schema-invalid rows are kept when the JSON parses:
+            out[f"ent_{name}_F1_salvaged"] = prf(stp, sfp, sfn)[2]
     return out
 
 
