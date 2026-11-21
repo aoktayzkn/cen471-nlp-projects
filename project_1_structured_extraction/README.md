@@ -17,7 +17,7 @@ Everything else (model, system prompt, data, seed, context length) is identical 
 - End-to-end sentiment accuracy is 1.5-2.5 points higher with the schema, but this gain comes only from the 4-6 outputs per 200 that prompt-only loses to format violations. Salvaged accuracy (sentiment read from the output whenever it is valid) is identical in every condition, and the paired McNemar tests are not significant.
 - Entity F1 (100 manually verified reviews, 268 entities) is about 0.66-0.70 strict and 0.72-0.73 lenient, with no consistent difference between the settings.
 
-Full details: the technical report in `report/` (PDF) and `reports/settings_comparison.md`.
+Full details: the technical report ([CEN471_NLP_Project1_Technical_Report.pdf](CEN471_NLP_Project1_Technical_Report.pdf)) and `reports/settings_comparison.md`.
 
 ## Reproducibility details
 
@@ -93,26 +93,39 @@ python project_1_structured_extraction/src/classical_baseline.py   # TF-IDF / Bo
 ## Repository structure
 
 ```
+```text
 project_1_structured_extraction/
-  prompts/extraction_prompt.py     system prompt (v3) and user prompt
+  README.md
+  CEN471_NLP_Project1_Technical_Report.pdf   technical report (4 pages)
+  prompts/
+    extraction_prompt.py           system prompt (v3) and user prompt
   src/
+    data_loader.py                 streams IMDB (test split) and saves the balanced 200-review sample
     pipeline_settings.py           runs prompt_only and schema, saves raw outputs and run_meta
     parser.py                      cleaning, stage-wise parsing, strict schema check
     evaluate_settings.py           the four metrics, entity P/R/F1, paired McNemar test
     build_annotation_template.py   creates the gold-annotation template
     review_gold.py                 terminal tool used to verify and correct the gold entities
-    show_failures.py, entity_errors.py   error analyses
+    show_failures.py               prints and saves the malformed outputs
+    entity_errors.py               entity error analysis
     make_plots.py                  report figures
     live_demo.py                   side-by-side live demo
-    fewshot_latency.py, classical_baseline.py   extra experiments
+    fewshot_latency.py             few-shot latency experiment
+    classical_baseline.py          TF-IDF / BoW + logistic regression baseline
+    tokenizer_demo.py              Hugging Face tokenizer demo (Qwen2.5 tokenizer)
   data/
-    raw/imdb_balanced_200.csv      evaluation set
+    raw/imdb_balanced_200.csv      evaluation set (100 positive, 100 negative)
     annotation/entity_gold.csv     manually verified entity gold (100 reviews, 268 entities)
     live_demo/new_reviews.txt      five new reviews for the live test
-    processed/settings/            result CSVs and run_meta files
-  reports/                         comparison tables, error analyses, plots
+    processed/settings/            result CSVs and run_meta files (8 runs)
+  reports/
+    settings_comparison.md         metric tables for all runs
+    format_failures*.txt           malformed outputs
+    entity_errors_schema_T0.0.txt  entity error list
+    fewshot_latency.csv / .md      few-shot latency results
+    classical_baseline.md          classical baseline results
+    plots/                         figures 10-12
   archive_old_protocol/            first experiments, kept for transparency (see below)
-report/                            technical report (PDF)
 ```
 
 ## Metrics
