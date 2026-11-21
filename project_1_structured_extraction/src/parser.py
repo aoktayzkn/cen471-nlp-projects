@@ -34,7 +34,9 @@ def clean_raw_output(raw_text: str) -> str:
     text = re.sub(r"\s*```$", "", text)
     return text.strip()
 
-
+# LEGACY (first version of the project). Not used by the final experiments:
+# it silently repairs unknown categories to "Other". Final code uses
+# parse_json_stages() and strict_schema_check() below.
 def parse_and_validate_json(
     raw_text: str, prompt_version: str = "v2"
 ) -> Tuple[bool, Optional[Dict[str, Any]], str]:
