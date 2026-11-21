@@ -30,13 +30,14 @@ VALID_CATEGORIES = {
 
 def clean_raw_output(raw_text: str) -> str:
     text = raw_text.strip()
-    text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE) # Q&A: Question A1
     text = re.sub(r"\s*```$", "", text)
     return text.strip()
 
 # LEGACY (first version of the project). Not used by the final experiments:
 # it silently repairs unknown categories to "Other". Final code uses
 # parse_json_stages() and strict_schema_check() below.
+
 def parse_and_validate_json(
     raw_text: str, prompt_version: str = "v2"
 ) -> Tuple[bool, Optional[Dict[str, Any]], str]:
@@ -76,7 +77,8 @@ def parse_and_validate_json(
         return False, None, f"Invalid sentiment '{sentiment_val}'. Allowed: {valid_sentiments}"
     data["sentiment"] = sentiment_val
 
-    # 2. Category Normalizasyonu & Kontrolü
+    # 2. Eski Category Normalizasyonu & Kontrolü
+    # Q&A: Question A2
     category_val = str(data.get("category", "")).strip().title()
     if category_val.lower() not in VALID_CATEGORIES:
         category_val = "Other"
@@ -149,7 +151,7 @@ def strict_schema_check(data: Optional[Dict[str, Any]]) -> Tuple[bool, str]:
     missing = {"category", "sentiment", "entities"} - set(data)
     if missing:
         return False, f"missing keys: {sorted(missing)}"
-    if data["category"] not in STRICT_CATEGORIES:
+    if data["category"] not in STRICT_CATEGORIES: #The new part that I mentioned in Question A2.
         return False, f"category not allowed: {data['category']!r}"
     if data["sentiment"] not in STRICT_SENTIMENTS:
         return False, f"sentiment not allowed: {data['sentiment']!r}"
