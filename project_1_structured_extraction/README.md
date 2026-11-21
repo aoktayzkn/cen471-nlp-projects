@@ -93,7 +93,6 @@ python project_1_structured_extraction/src/classical_baseline.py   # TF-IDF / Bo
 ## Repository structure
 
 ```
-```text
 project_1_structured_extraction/
   README.md
   CEN471_NLP_Project1_Technical_Report.pdf   technical report (4 pages)
