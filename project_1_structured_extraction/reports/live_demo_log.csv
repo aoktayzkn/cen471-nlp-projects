@@ -1,0 +1,21 @@
+time,prompt_style,temperature,setting,review,label,raw_ok,cleaned_ok,schema_ok,sentiment,category,entities,latency_ms
+2026-11-20T20:24:43,hardened,0.0,prompt_only,One of Disney's best films that I can enjoy watching often. you may easily guess,positive,True,True,True,positive,Animation,"['Magic Kingdom', 'The cast']",434
+2026-11-20T20:24:43,hardened,0.0,schema,One of Disney's best films that I can enjoy watching often. you may easily guess,positive,True,True,True,positive,Animation,['magictrain'],351
+2026-11-20T20:24:43,hardened,1.0,prompt_only,One of Disney's best films that I can enjoy watching often. you may easily guess,positive,True,True,True,positive,Animation,['magictrain'],354
+2026-11-20T20:24:44,hardened,1.0,schema,One of Disney's best films that I can enjoy watching often. you may easily guess,positive,True,True,True,positive,Animation,['magictrain'],353
+2026-11-20T20:24:44,hardened,0.0,prompt_only,What was with all the Turkish actors? No offense but I thought it was all for no,negative,True,True,True,negative,Action,['Michael Madsen'],492
+2026-11-20T20:24:45,hardened,0.0,schema,What was with all the Turkish actors? No offense but I thought it was all for no,negative,True,True,True,negative,Action,['Michael Madsen'],389
+2026-11-20T20:24:45,hardened,1.0,prompt_only,What was with all the Turkish actors? No offense but I thought it was all for no,negative,True,True,True,negative,Action,['Michael Madsen'],387
+2026-11-20T20:24:45,hardened,1.0,schema,What was with all the Turkish actors? No offense but I thought it was all for no,negative,True,True,True,negative,Action,['Michael Madsen'],390
+2026-11-20T20:24:46,hardened,0.0,prompt_only,"Grey Gardens is shocking, amusing, sad and mesmerizing. I watched in amazement a",positive,True,True,True,positive,Documentary,"['Grey Gardens', 'Ediths Jr.', 'Ediths Sr.']",557
+2026-11-20T20:24:47,hardened,0.0,schema,"Grey Gardens is shocking, amusing, sad and mesmerizing. I watched in amazement a",positive,True,True,True,positive,Documentary,"['Grey Gardens', 'Ediths Jr.', 'Ediths Sr.']",525
+2026-11-20T20:24:47,hardened,1.0,prompt_only,"Grey Gardens is shocking, amusing, sad and mesmerizing. I watched in amazement a",positive,True,True,True,positive,Documentary,"['Grey Gardens', 'Ediths Jr.', 'Ediths Sr.']",521
+2026-11-20T20:24:48,hardened,1.0,schema,"Grey Gardens is shocking, amusing, sad and mesmerizing. I watched in amazement a",positive,True,True,True,positive,Documentary,"['Grey Gardens', 'Ediths Jr.', 'Ediths Sr.']",521
+2026-11-20T20:24:48,hardened,0.0,prompt_only,"When The Matrix appeared in 1999 and questioned existence and identity, it was e",positive,True,True,True,positive,Thriller,"['Morgan Sullivan', 'Digicorp', 'Cypher']",596
+2026-11-20T20:24:49,hardened,0.0,schema,"When The Matrix appeared in 1999 and questioned existence and identity, it was e",positive,True,True,True,positive,Thriller,"['Morgan Sullivan', 'Digicorp', 'Cypher']",507
+2026-11-20T20:24:49,hardened,1.0,prompt_only,"When The Matrix appeared in 1999 and questioned existence and identity, it was e",positive,True,True,True,positive,Drama,"['The Matrix', 'Cypher', 'Morgan Sullivan', 'Digicorp']",549
+2026-11-20T20:24:50,hardened,1.0,schema,"When The Matrix appeared in 1999 and questioned existence and identity, it was e",positive,True,True,True,positive,Drama,"['The Matrix', 'Cypher', 'Morgan Sullivan', 'Digicorp']",557
+2026-11-20T20:24:50,hardened,0.0,prompt_only,I am a big fan of Arnold Vosloo. Finally seeing him as the star of a recent movi,negative,True,True,True,positive,Horror,['Arnold Vosloo'],504
+2026-11-20T20:24:51,hardened,0.0,schema,I am a big fan of Arnold Vosloo. Finally seeing him as the star of a recent movi,negative,True,True,True,positive,Horror,['Arnold Vosloo'],407
+2026-11-20T20:24:51,hardened,1.0,prompt_only,I am a big fan of Arnold Vosloo. Finally seeing him as the star of a recent movi,negative,True,True,True,positive,Horror,"['Arnold Vosloo', 'Jackie']",457
+2026-11-20T20:24:52,hardened,1.0,schema,I am a big fan of Arnold Vosloo. Finally seeing him as the star of a recent movi,negative,True,True,True,positive,Horror,"['Arnold Vosloo', 'Jackie']",459
