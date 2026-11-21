@@ -30,7 +30,7 @@ VALID_CATEGORIES = {
 
 def clean_raw_output(raw_text: str) -> str:
     text = raw_text.strip()
-    text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE) # Q&A: Question A1
     text = re.sub(r"\s*```$", "", text)
     return text.strip()
 
