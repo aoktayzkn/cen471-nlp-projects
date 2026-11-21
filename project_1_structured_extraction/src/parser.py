@@ -37,7 +37,7 @@ def clean_raw_output(raw_text: str) -> str:
 # LEGACY (first version of the project). Not used by the final experiments:
 # it silently repairs unknown categories to "Other". Final code uses
 # parse_json_stages() and strict_schema_check() below.
-# Q&A: Question A2
+
 def parse_and_validate_json(
     raw_text: str, prompt_version: str = "v2"
 ) -> Tuple[bool, Optional[Dict[str, Any]], str]:
@@ -77,7 +77,8 @@ def parse_and_validate_json(
         return False, None, f"Invalid sentiment '{sentiment_val}'. Allowed: {valid_sentiments}"
     data["sentiment"] = sentiment_val
 
-    # 2. Category Normalizasyonu & Kontrolü
+    # 2. Eski Category Normalizasyonu & Kontrolü
+    # Q&A: Question A2
     category_val = str(data.get("category", "")).strip().title()
     if category_val.lower() not in VALID_CATEGORIES:
         category_val = "Other"
