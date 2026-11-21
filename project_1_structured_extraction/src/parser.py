@@ -151,7 +151,7 @@ def strict_schema_check(data: Optional[Dict[str, Any]]) -> Tuple[bool, str]:
     missing = {"category", "sentiment", "entities"} - set(data)
     if missing:
         return False, f"missing keys: {sorted(missing)}"
-    if data["category"] not in STRICT_CATEGORIES:
+    if data["category"] not in STRICT_CATEGORIES: #The new part that I mentioned in Question A2.
         return False, f"category not allowed: {data['category']!r}"
     if data["sentiment"] not in STRICT_SENTIMENTS:
         return False, f"sentiment not allowed: {data['sentiment']!r}"
