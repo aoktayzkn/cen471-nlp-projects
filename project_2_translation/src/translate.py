@@ -87,7 +87,7 @@ def run_metadata(options):
         "quantization": details["quantization_level"],
         "ollama_version": (version.stdout + version.stderr).strip(),
         "options": options,
-        "system_prompt": SYSTEM_PROMPT,
+        "messages": build_messages("<source>"),
     }
 
 
@@ -115,7 +115,7 @@ def main():
         data = data[: args.limit]
 
     # A changed model, prompt or fixed setting gets a new file, so old outputs are never mixed in
-    config = json.dumps([MODEL, SYSTEM_PROMPT, NUM_CTX, NUM_PREDICT])
+    config = json.dumps([MODEL, build_messages(""), NUM_CTX, NUM_PREDICT])
     tag = hashlib.sha1(config.encode()).hexdigest()[:6]
     name = f"{args.split}_T{args.temperature}_seed{args.seed}_{tag}"
     OUT_DIR.mkdir(parents=True, exist_ok=True)
