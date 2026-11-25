@@ -3,7 +3,7 @@
 Run from the repository root:
     python project_2_translation/src/translate.py --split dev --limit 10
     python project_2_translation/src/translate.py --split test --temperature 0.7 --seed 42
-    python project_2_translation/src/translate.py --split dev --limit 10 --model gemma3:4b
+    python project_2_translation/src/translate.py --split dev --limit 10 --model qwen2.5:7b
 """
 import argparse
 import hashlib
@@ -14,7 +14,7 @@ from pathlib import Path
 
 import ollama
 
-DEFAULT_MODEL = "qwen2.5:7b"
+DEFAULT_MODEL = "gemma3:4b"
 DATA_DIR = Path("project_2_translation/data/raw")
 OUT_DIR = Path("project_2_translation/data/outputs")
 NUM_CTX, NUM_PREDICT = 2048, 512
