@@ -3,6 +3,7 @@
 Run from the repository root:
     python project_2_translation/src/translate.py --split dev --limit 10
     python project_2_translation/src/translate.py --split test --temperature 0.7 --seed 42
+    python project_2_translation/src/translate.py --split dev --limit 10 --model gemma3:4b
 """
 import argparse
 import hashlib
@@ -13,7 +14,7 @@ from pathlib import Path
 
 import ollama
 
-MODEL = "qwen2.5:7b"
+DEFAULT_MODEL = "qwen2.5:7b"
 DATA_DIR = Path("project_2_translation/data/raw")
 OUT_DIR = Path("project_2_translation/data/outputs")
 NUM_CTX, NUM_PREDICT = 2048, 512
@@ -62,8 +63,8 @@ def clean_output(raw, source):
     return text, flags
 
 
-def translate(source, options):
-    response = ollama.chat(model=MODEL, messages=build_messages(source), options=options)
+def translate(model, source, options):
+    response = ollama.chat(model=model, messages=build_messages(source), options=options)
     raw = response["message"]["content"]
     output, flags = clean_output(raw, source)
     if response.get("done_reason") == "length":
@@ -78,12 +79,12 @@ def translate(source, options):
     }
 
 
-def run_metadata(options):
+def run_metadata(model, options):
     """Details needed to reproduce the run."""
     version = subprocess.run(["ollama", "--version"], capture_output=True, text=True, timeout=15)
-    details = ollama.show(MODEL)["details"]
+    details = ollama.show(model)["details"]
     return {
-        "model": MODEL,
+        "model": model,
         "quantization": details["quantization_level"],
         "ollama_version": (version.stdout + version.stderr).strip(),
         "options": options,
@@ -100,6 +101,7 @@ def read_jsonl(path):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--split", choices=["dev", "test"], default="dev")
     parser.add_argument("--temperature", type=float, default=0.1)
     parser.add_argument("--seed", type=int, default=42)
@@ -115,7 +117,7 @@ def main():
         data = data[: args.limit]
 
     # A changed model, prompt or fixed setting gets a new file, so old outputs are never mixed in
-    config = json.dumps([MODEL, build_messages(""), NUM_CTX, NUM_PREDICT])
+    config = json.dumps([args.model, build_messages(""), NUM_CTX, NUM_PREDICT])
     tag = hashlib.sha1(config.encode()).hexdigest()[:6]
     name = f"{args.split}_T{args.temperature}_seed{args.seed}_{tag}"
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -126,12 +128,12 @@ def main():
     if not todo:
         return
 
-    meta = json.dumps(run_metadata(options), indent=2, ensure_ascii=False)
+    meta = json.dumps(run_metadata(args.model, options), indent=2, ensure_ascii=False)
     (OUT_DIR / f"{name}.meta.json").write_text(meta, encoding="utf-8")
-    translate("Hello.", options)  # warm-up: model loading is kept out of the timing
+    translate(args.model, "Hello.", options)  # warm-up: model loading is kept out of the timing
 
     for number, item in enumerate(todo, 1):
-        row = {**item, **translate(item["source"], options)}
+        row = {**item, **translate(args.model, item["source"], options)}
         with path.open("a", encoding="utf-8") as f:  # saved at once, so a run can be resumed
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
         print(f"[{number}/{len(todo)}] {row['seconds']:.1f}s {row['flags']}\n  {row['output']}")
