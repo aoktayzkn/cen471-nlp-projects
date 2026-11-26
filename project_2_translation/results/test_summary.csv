@@ -1,5 +1,6 @@
 ﻿model;prompt;temperature;seed;n;BLEU;chrF;METEOR;file
 gemma3:4b;v1;0.1;42;150;15.71;52.38;46.14;test_T0.1_seed42_4636c8.jsonl
+gemma3:1b;v1;0.1;42;150;6.18;39.13;32.94;test_T0.1_seed42_951532.jsonl
 gemma3:4b;v1;0.1;43;150;16.1;52.47;46.34;test_T0.1_seed43_4636c8.jsonl
 gemma3:4b;v1;0.1;44;150;15.65;52.26;45.86;test_T0.1_seed44_4636c8.jsonl
 gemma3:4b;v1;0.7;42;150;14.69;51.89;45.62;test_T0.7_seed42_4636c8.jsonl
