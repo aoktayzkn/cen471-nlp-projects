@@ -5,10 +5,12 @@ Run from the repository root:
     python project_2_translation/src/translate.py --split test --temperature 0.7 --seed 42
     python project_2_translation/src/translate.py --split dev --limit 10 --model qwen2.5:7b
     python project_2_translation/src/translate.py --split dev --prompt v2
+    python project_2_translation/src/translate.py --split test --prompt fewshot
 """
 import argparse
 import hashlib
 import json
+import random
 import re
 import subprocess
 from pathlib import Path
@@ -19,6 +21,7 @@ DEFAULT_MODEL = "gemma3:4b"
 DATA_DIR = Path("project_2_translation/data/raw")
 OUT_DIR = Path("project_2_translation/data/outputs")
 NUM_CTX, NUM_PREDICT = 2048, 512
+FEWSHOT_COUNT, FEWSHOT_SEED = 3, 42
 
 # System prompts compared on the dev set
 PROMPTS = {
@@ -36,6 +39,7 @@ PROMPTS = {
         "Do not wrap it in quotation marks, but keep the quotation marks that appear in the source."
     ),
 }
+PROMPTS["fewshot"] = PROMPTS["v1"]  # same instruction, plus example translations
 
 # A label at the very start of the answer, e.g. "Çeviri:" or "Here is the translation:"
 PREFIX = re.compile(
@@ -50,8 +54,18 @@ FOREIGN = re.compile("[Ѐ-ӿ؀-ۿ฀-๿぀-ヿ㐀-鿿가-힯]")
 def build_messages(source, prompt):
     return [
         {"role": "system", "content": PROMPTS[prompt]},
+        *(fewshot_messages() if prompt == "fewshot" else []),
         {"role": "user", "content": source},
     ]
+
+
+def fewshot_messages():
+    """Dev pairs as earlier chat turns. A seeded random choice, never taken from the test set."""
+    pairs = random.Random(FEWSHOT_SEED).sample(read_jsonl(DATA_DIR / "dev.jsonl"), FEWSHOT_COUNT)
+    return [message for pair in pairs for message in (
+        {"role": "user", "content": pair["source"]},
+        {"role": "assistant", "content": pair["reference"]},
+    )]
 
 
 def clean_output(raw, source):
