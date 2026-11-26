@@ -1,0 +1,10 @@
+﻿model;prompt;temperature;seed;n;BLEU;chrF;METEOR;file
+gemma3:4b;v1;0.1;42;150;15.71;52.38;46.14;test_T0.1_seed42_4636c8.jsonl
+gemma3:4b;v1;0.1;43;150;16.1;52.47;46.34;test_T0.1_seed43_4636c8.jsonl
+gemma3:4b;v1;0.1;44;150;15.65;52.26;45.86;test_T0.1_seed44_4636c8.jsonl
+gemma3:4b;v1;0.7;42;150;14.69;51.89;45.62;test_T0.7_seed42_4636c8.jsonl
+gemma3:4b;v1;0.7;43;150;16.36;52.34;45.96;test_T0.7_seed43_4636c8.jsonl
+gemma3:4b;v1;0.7;44;150;15.59;52.55;46.38;test_T0.7_seed44_4636c8.jsonl
+gemma3:4b;v1;1.2;42;150;14.64;52.1;46.0;test_T1.2_seed42_4636c8.jsonl
+gemma3:4b;v1;1.2;43;150;15.21;52.03;45.9;test_T1.2_seed43_4636c8.jsonl
+gemma3:4b;v1;1.2;44;150;15.8;52.42;46.23;test_T1.2_seed44_4636c8.jsonl
