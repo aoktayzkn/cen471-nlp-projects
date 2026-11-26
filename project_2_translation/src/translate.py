@@ -4,6 +4,7 @@ Run from the repository root:
     python project_2_translation/src/translate.py --split dev --limit 10
     python project_2_translation/src/translate.py --split test --temperature 0.7 --seed 42
     python project_2_translation/src/translate.py --split dev --limit 10 --model qwen2.5:7b
+    python project_2_translation/src/translate.py --split dev --prompt v2
 """
 import argparse
 import hashlib
@@ -19,11 +20,22 @@ DATA_DIR = Path("project_2_translation/data/raw")
 OUT_DIR = Path("project_2_translation/data/outputs")
 NUM_CTX, NUM_PREDICT = 2048, 512
 
-SYSTEM_PROMPT = (
-    "You are a professional English-to-Turkish translator. "
-    "Translate the user's text into Turkish. "
-    "Output only the Turkish translation, with no explanations, notes or quotation marks."
-)
+# System prompts compared on the dev set
+PROMPTS = {
+    "v1": (
+        "You are a professional English-to-Turkish translator. "
+        "Translate the user's text into Turkish. "
+        "Output only the Turkish translation, with no explanations, notes or quotation marks."
+    ),
+    "v2": (
+        "You are a professional English-to-Turkish translator. "
+        "Translate the user's text into natural, fluent Turkish. "
+        "Do not add or omit any information. "
+        "Keep names, numbers, dates, days and negations exactly as in the source. "
+        "Output only the Turkish translation, without explanations or notes. "
+        "Do not wrap it in quotation marks, but keep the quotation marks that appear in the source."
+    ),
+}
 
 # A label at the very start of the answer, e.g. "Çeviri:" or "Here is the translation:"
 PREFIX = re.compile(
@@ -35,9 +47,9 @@ PREFIX = re.compile(
 FOREIGN = re.compile("[Ѐ-ӿ؀-ۿ฀-๿぀-ヿ㐀-鿿가-힯]")
 
 
-def build_messages(source):
+def build_messages(source, prompt):
     return [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": PROMPTS[prompt]},
         {"role": "user", "content": source},
     ]
 
@@ -63,8 +75,8 @@ def clean_output(raw, source):
     return text, flags
 
 
-def translate(model, source, options):
-    response = ollama.chat(model=model, messages=build_messages(source), options=options)
+def translate(model, prompt, source, options):
+    response = ollama.chat(model=model, messages=build_messages(source, prompt), options=options)
     raw = response["message"]["content"]
     output, flags = clean_output(raw, source)
     if response.get("done_reason") == "length":
@@ -79,7 +91,7 @@ def translate(model, source, options):
     }
 
 
-def run_metadata(model, options):
+def run_metadata(model, prompt, options):
     """Details needed to reproduce the run."""
     version = subprocess.run(["ollama", "--version"], capture_output=True, text=True, timeout=15)
     details = ollama.show(model)["details"]
@@ -88,7 +100,8 @@ def run_metadata(model, options):
         "quantization": details["quantization_level"],
         "ollama_version": (version.stdout + version.stderr).strip(),
         "options": options,
-        "messages": build_messages("<source>"),
+        "prompt": prompt,
+        "messages": build_messages("<source>", prompt),
     }
 
 
@@ -102,6 +115,7 @@ def read_jsonl(path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--prompt", choices=list(PROMPTS), default="v1")
     parser.add_argument("--split", choices=["dev", "test"], default="dev")
     parser.add_argument("--temperature", type=float, default=0.1)
     parser.add_argument("--seed", type=int, default=42)
@@ -117,7 +131,7 @@ def main():
         data = data[: args.limit]
 
     # A changed model, prompt or fixed setting gets a new file, so old outputs are never mixed in
-    config = json.dumps([args.model, build_messages(""), NUM_CTX, NUM_PREDICT])
+    config = json.dumps([args.model, build_messages("", args.prompt), NUM_CTX, NUM_PREDICT])
     tag = hashlib.sha1(config.encode()).hexdigest()[:6]
     name = f"{args.split}_T{args.temperature}_seed{args.seed}_{tag}"
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -128,12 +142,12 @@ def main():
     if not todo:
         return
 
-    meta = json.dumps(run_metadata(args.model, options), indent=2, ensure_ascii=False)
+    meta = json.dumps(run_metadata(args.model, args.prompt, options), indent=2, ensure_ascii=False)
     (OUT_DIR / f"{name}.meta.json").write_text(meta, encoding="utf-8")
-    translate(args.model, "Hello.", options)  # warm-up: model loading is kept out of the timing
+    translate(args.model, args.prompt, "Hello.", options)  # warm-up: model loading is kept out of the timing
 
     for number, item in enumerate(todo, 1):
-        row = {**item, **translate(args.model, item["source"], options)}
+        row = {**item, **translate(args.model, args.prompt, item["source"], options)}
         with path.open("a", encoding="utf-8") as f:  # saved at once, so a run can be resumed
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
         print(f"[{number}/{len(todo)}] {row['seconds']:.1f}s {row['flags']}\n  {row['output']}")

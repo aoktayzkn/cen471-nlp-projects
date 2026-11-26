@@ -93,6 +93,7 @@ def main():
         )
         summary.append({
             "model": meta["model"],
+            "prompt": meta.get("prompt", "v1"),  # runs made before --prompt existed used v1
             "temperature": meta["options"]["temperature"],
             "seed": meta["options"]["seed"],
             "n": len(rows),
@@ -116,9 +117,9 @@ def main():
     (RESULT_DIR / f"{args.split}_metric_settings.json").write_text(
         json.dumps(settings, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print(f"{'model':<14}{'T':>5}{'seed':>6}{'n':>5}{'BLEU':>8}{'chrF':>8}{'METEOR':>8}")
+    print(f"{'model':<14}{'prompt':>7}{'T':>5}{'seed':>6}{'n':>5}{'BLEU':>8}{'chrF':>8}{'METEOR':>8}")
     for s in summary:
-        print(f"{s['model']:<14}{s['temperature']:>5}{s['seed']:>6}{s['n']:>5}"
+        print(f"{s['model']:<14}{s['prompt']:>7}{s['temperature']:>5}{s['seed']:>6}{s['n']:>5}"
               f"{s['BLEU']:>8.2f}{s['chrF']:>8.2f}{s['METEOR']:>8.2f}")
     print("\n".join(signatures.values()))
 
