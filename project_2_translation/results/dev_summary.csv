@@ -1,3 +1,4 @@
-﻿model;temperature;seed;n;BLEU;chrF;METEOR;file
-gemma3:4b;0.1;42;40;14.31;50.14;47.23;dev_T0.1_seed42_4636c8.jsonl
-qwen2.5:7b;0.1;42;40;11.03;43.92;39.96;dev_T0.1_seed42_a43008.jsonl
+﻿model;prompt;temperature;seed;n;BLEU;chrF;METEOR;file
+gemma3:4b;v1;0.1;42;40;14.31;50.14;47.23;dev_T0.1_seed42_4636c8.jsonl
+qwen2.5:7b;v1;0.1;42;40;11.03;43.92;39.96;dev_T0.1_seed42_a43008.jsonl
+gemma3:4b;v2;0.1;42;40;16.88;50.17;45.66;dev_T0.1_seed42_f3d71d.jsonl

@@ -1,0 +1,22 @@
+{
+  "model": "gemma3:4b",
+  "quantization": "Q4_K_M",
+  "ollama_version": "ollama version is 0.35.1",
+  "options": {
+    "temperature": 0.1,
+    "seed": 42,
+    "num_ctx": 2048,
+    "num_predict": 512
+  },
+  "prompt": "v2",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a professional English-to-Turkish translator. Translate the user's text into natural, fluent Turkish. Do not add or omit any information. Keep names, numbers, dates, days and negations exactly as in the source. Output only the Turkish translation, without explanations or notes. Do not wrap it in quotation marks, but keep the quotation marks that appear in the source."
+    },
+    {
+      "role": "user",
+      "content": "<source>"
+    }
+  ]
+}
