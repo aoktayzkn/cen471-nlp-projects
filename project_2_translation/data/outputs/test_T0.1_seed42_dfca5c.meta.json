@@ -1,0 +1,46 @@
+{
+  "model": "gemma3:4b",
+  "quantization": "Q4_K_M",
+  "ollama_version": "ollama version is 0.35.1",
+  "options": {
+    "temperature": 0.1,
+    "seed": 42,
+    "num_ctx": 2048,
+    "num_predict": 512
+  },
+  "prompt": "fewshot",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are a professional English-to-Turkish translator. Translate the user's text into Turkish. Output only the Turkish translation, with no explanations, notes or quotation marks."
+    },
+    {
+      "role": "user",
+      "content": "The evidence shows that ticagrelor, in combination with aspirin, is effective at reducing the risk of further heart attacks and strokes in people who have already had a heart attack."
+    },
+    {
+      "role": "assistant",
+      "content": "Deliller, ticagrelorun aspirin ile birlikte kullanılmasının, daha önce kalp krizi geçiren kişilerde yinelenen kalp krizi ve felç riskini azaltma konusunda etkili olduğunu göstermektedir."
+    },
+    {
+      "role": "user",
+      "content": "The 45-year-old Italian is the sixth jockey to reach the landmark in Flat racing."
+    },
+    {
+      "role": "assistant",
+      "content": "45 yaşındaki İtalyan, Engelsiz koşuda bu kilometre taşına ulaşan altıncı jokey."
+    },
+    {
+      "role": "user",
+      "content": "Witnesses said that police officers shot and killed scores of unarmed demonstrators."
+    },
+    {
+      "role": "assistant",
+      "content": "Şahitler, polis memurlarının çok sayıda silahsız göstericiyi vurduğunu ve öldürdüğünü söyledi."
+    },
+    {
+      "role": "user",
+      "content": "<source>"
+    }
+  ]
+}

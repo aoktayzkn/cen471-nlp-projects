@@ -1,0 +1,12 @@
+{
+  "signatures": {
+    "BLEU": "nrefs:1|case:mixed|eff:no|tok:13a|smooth:exp|version:2.6.0",
+    "chrF": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+  },
+  "meteor": {
+    "library": "nltk 3.10.4",
+    "tokenizer": "\\w+|[^\\w\\s]",
+    "lowercase": "Turkish-aware",
+    "corpus": "mean of sentence scores"
+  }
+}
