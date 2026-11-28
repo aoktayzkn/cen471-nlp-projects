@@ -115,6 +115,12 @@ python project_2_translation/src/live_demo.py          # 5 test sentences at tem
 python project_2_translation/src/live_demo.py --new    # type new sentences, optionally with a reference
 ```
 
+**9. Metric checks on saved sentences** (restores two omitted words and separates merged words in one reference, then shows the scores before and after; nothing is saved):
+
+```bash
+python project_2_translation/src/defense_checks.py
+```
+
 ## Repository structure
 
 ```
@@ -130,6 +136,7 @@ project_2_translation/
     compare_ratings.py      Spearman correlation and disagreement cases
     token_counts.py         token counts of sources and references, generation speed
     live_demo.py            live tests with immediate scores
+    defense_checks.py       how the metrics react when one thing in a saved sentence is repaired
   data/
     raw/                    dev.jsonl (40 pairs) and test.jsonl (150 pairs)
     outputs/                raw and cleaned translations (.jsonl) and metadata (.meta.json)
